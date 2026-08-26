@@ -1,61 +1,63 @@
 import { useTranslation } from 'react-i18next'
-import { AlertTriangle, Check, ClipboardList, FileText, Landmark } from 'lucide-react'
-import { cn } from '@/shared/lib/utils'
+import { AlertTriangle, ClipboardList, FileText, Landmark, Plus, Sparkles } from 'lucide-react'
 import { Pill } from '@/shared/ui'
-import { REPORT_TEMPLATES } from '../api/mockReports'
-import type { ReportTemplateId } from '../types'
 import './TemplateGallery.css'
 
-const TEMPLATE_ICON: Record<ReportTemplateId, typeof FileText> = {
+const PRESET_ICON: Record<string, typeof FileText> = {
   'executive-summary': FileText,
   'ic-memo': Landmark,
   'status-report': ClipboardList,
   'red-flag-summary': AlertTriangle,
 }
 
-interface TemplateGalleryProps {
-  selectedId: ReportTemplateId | null
-  onSelect: (id: ReportTemplateId) => void
+export interface ReportCardInfo {
+  id: string
+  name: string
+  description: string
+  audience?: string
 }
 
-/** Paso 1 del flujo (guion §5.5): elegir plantilla. */
-export function TemplateGallery({ selectedId, onSelect }: TemplateGalleryProps) {
+interface TemplateGalleryProps {
+  cards: ReportCardInfo[]
+  onOpen: (id: string) => void
+  onCreateNew: () => void
+}
+
+/**
+ * Tarjetas de informe (guion §5.5): las 4 plantillas fijas + una tarjeta por
+ * cada informe "a medida" ya creado, más la tarjeta "+ Crear nuevo informe"
+ * al final — pedido explícito, sustituye al antiguo paso 1 de "elegir
+ * plantilla para configurar un borrador".
+ */
+export function TemplateGallery({ cards, onOpen, onCreateNew }: TemplateGalleryProps) {
   const { t } = useTranslation('reports')
 
   return (
     <div className="report-template-grid">
-      {REPORT_TEMPLATES.map((template) => {
-        const Icon = TEMPLATE_ICON[template.id]
-        const isSelected = template.id === selectedId
+      {cards.map((card) => {
+        const Icon = PRESET_ICON[card.id] ?? Sparkles
         return (
-          <button
-            key={template.id}
-            type="button"
-            className={cn('report-template-card', isSelected && 'is-selected')}
-            onClick={() => onSelect(template.id)}
-            aria-pressed={isSelected}
-          >
-            <div className="report-template-card__head">
-              <span className="report-template-card__icon" aria-hidden>
-                <Icon size={18} />
-              </span>
-              {isSelected && (
-                <span className="report-template-card__check" aria-hidden>
-                  <Check size={14} />
-                </span>
-              )}
-            </div>
-            <div className="report-template-card__name">{template.name}</div>
-            <p className="report-template-card__desc">{template.description}</p>
-            <div className="report-template-card__foot">
-              <Pill variant="outline">{template.audience}</Pill>
-              <span className="report-template-card__count">
-                {t('templates.sectionsCount', { count: template.sections.length })}
-              </span>
-            </div>
+          <button key={card.id} type="button" className="report-template-card" onClick={() => onOpen(card.id)}>
+            <span className="report-template-card__icon" aria-hidden>
+              <Icon size={18} />
+            </span>
+            <div className="report-template-card__name">{card.name}</div>
+            <p className="report-template-card__desc">{card.description}</p>
+            {card.audience && (
+              <div className="report-template-card__foot">
+                <Pill variant="outline">{card.audience}</Pill>
+              </div>
+            )}
           </button>
         )
       })}
+
+      <button type="button" className="report-template-card report-template-card--new" onClick={onCreateNew}>
+        <span className="report-template-card__new-icon" aria-hidden>
+          <Plus size={20} />
+        </span>
+        {t('create.cta')}
+      </button>
     </div>
   )
 }

@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { sleep } from '@/shared/lib/utils'
-import { MOCK_CONVERSATIONS, MOCK_SOURCE_DOCUMENTS, matchReply } from '../api/mockChat'
+import { i18n } from '@/shared/lib/i18n'
+import type { Locale } from '@/shared/types'
+import { MOCK_SOURCE_DOCUMENTS, getConversations, matchReply } from '../api/mockChat'
 import type { ChatConversation, ChatMessage, ChatSourceDocument } from '../types'
 
 interface OperationChatState {
@@ -25,11 +27,15 @@ interface ChatState {
 let messageSeq = 0
 let conversationSeq = 0
 
-function cloneConversations(opId: string): ChatConversation[] {
-  return (MOCK_CONVERSATIONS[opId] ?? []).map((conversation) => ({
-    ...conversation,
-    messages: conversation.messages.map((message) => ({ ...message })),
-  }))
+/** El idioma activo de la interfaz decide en qué idioma se sirve el chat
+ * (pedido explícito) — cada combinación opId+idioma guarda su propio estado,
+ * así que cambiar de idioma no pierde lo escrito en el otro. */
+function currentLocale(): Locale {
+  return i18n.language === 'es' ? 'es' : 'en'
+}
+
+function storeKey(opId: string): string {
+  return `${opId}:${currentLocale()}`
 }
 
 function truncateTitle(text: string, max = 60): string {
@@ -46,13 +52,17 @@ export const useChatStore = create<ChatState>((set, get) => ({
   byOperation: {},
 
   ensureLoaded: (opId) => {
-    if (get().byOperation[opId]) return
-    const conversations = cloneConversations(opId)
+    const key = storeKey(opId)
+    if (get().byOperation[key]) return
+    const conversations = getConversations(opId, currentLocale()).map((conversation) => ({
+      ...conversation,
+      messages: conversation.messages.map((message) => ({ ...message })),
+    }))
     const sourceDocuments = [...(MOCK_SOURCE_DOCUMENTS[opId] ?? [])]
     set((state) => ({
       byOperation: {
         ...state.byOperation,
-        [opId]: {
+        [key]: {
           conversations,
           activeConversationId: conversations[0]?.id ?? '',
           sourceDocuments,
@@ -66,16 +76,18 @@ export const useChatStore = create<ChatState>((set, get) => ({
   },
 
   selectConversation: (opId, conversationId) => {
+    const key = storeKey(opId)
     set((state) => {
-      const op = state.byOperation[opId]
+      const op = state.byOperation[key]
       if (!op) return state
       return {
-        byOperation: { ...state.byOperation, [opId]: { ...op, activeConversationId: conversationId } },
+        byOperation: { ...state.byOperation, [key]: { ...op, activeConversationId: conversationId } },
       }
     })
   },
 
   startNewConversation: (opId) => {
+    const key = storeKey(opId)
     conversationSeq += 1
     const conversation: ChatConversation = {
       id: `conv-new-${conversationSeq}`,
@@ -84,12 +96,12 @@ export const useChatStore = create<ChatState>((set, get) => ({
       messages: [],
     }
     set((state) => {
-      const op = state.byOperation[opId]
+      const op = state.byOperation[key]
       if (!op) return state
       return {
         byOperation: {
           ...state.byOperation,
-          [opId]: {
+          [key]: {
             ...op,
             conversations: [conversation, ...op.conversations],
             activeConversationId: conversation.id,
@@ -103,14 +115,17 @@ export const useChatStore = create<ChatState>((set, get) => ({
     const trimmed = text.trim()
     if (!trimmed) return
 
+    const locale = currentLocale()
+    const key = storeKey(opId)
+
     get().ensureLoaded(opId)
-    const loaded = get().byOperation[opId]
+    const loaded = get().byOperation[key]
     if (!loaded) return
 
     let conversationId = loaded.activeConversationId
     if (!conversationId || !loaded.conversations.some((c) => c.id === conversationId)) {
       get().startNewConversation(opId)
-      conversationId = get().byOperation[opId].activeConversationId
+      conversationId = get().byOperation[key].activeConversationId
     }
 
     messageSeq += 1
@@ -122,12 +137,12 @@ export const useChatStore = create<ChatState>((set, get) => ({
     }
 
     set((state) => {
-      const op = state.byOperation[opId]
+      const op = state.byOperation[key]
       if (!op) return state
       return {
         byOperation: {
           ...state.byOperation,
-          [opId]: {
+          [key]: {
             ...op,
             thinking: true,
             conversations: op.conversations.map((c) =>
@@ -148,7 +163,7 @@ export const useChatStore = create<ChatState>((set, get) => ({
     // Simula latencia + "escribiendo..." (guion §5.1): sin streaming real.
     await sleep(900 + Math.round(Math.random() * 700))
 
-    const reply = matchReply(opId, trimmed)
+    const reply = matchReply(opId, trimmed, locale)
     messageSeq += 1
     const agentMessage: ChatMessage = {
       id: `msg-${conversationId}-${messageSeq}`,
@@ -159,12 +174,12 @@ export const useChatStore = create<ChatState>((set, get) => ({
     }
 
     set((state) => {
-      const op = state.byOperation[opId]
+      const op = state.byOperation[key]
       if (!op) return state
       return {
         byOperation: {
           ...state.byOperation,
-          [opId]: {
+          [key]: {
             ...op,
             thinking: false,
             conversations: op.conversations.map((c) =>
@@ -179,14 +194,15 @@ export const useChatStore = create<ChatState>((set, get) => ({
   },
 
   toggleSourceDocument: (opId, documentId) => {
+    const key = storeKey(opId)
     set((state) => {
-      const op = state.byOperation[opId]
+      const op = state.byOperation[key]
       if (!op) return state
       const isIncluded = op.includedDocumentIds.includes(documentId)
       return {
         byOperation: {
           ...state.byOperation,
-          [opId]: {
+          [key]: {
             ...op,
             includedDocumentIds: isIncluded
               ? op.includedDocumentIds.filter((id) => id !== documentId)
@@ -202,20 +218,30 @@ export const useChatStore = create<ChatState>((set, get) => ({
  * falta (evita llamar a `ensureLoaded` desde cada componente). */
 export function useConversations(opId: string): ChatConversation[] {
   useChatStore.getState().ensureLoaded(opId)
-  return useChatStore((state) => state.byOperation[opId]?.conversations ?? [])
+  return useChatStore((state) => state.byOperation[storeKey(opId)]?.conversations ?? [])
 }
 
 /** Conversacion activa de una operacion (la que se ve en el hilo central). */
 export function useActiveConversation(opId: string): ChatConversation | undefined {
   useChatStore.getState().ensureLoaded(opId)
   return useChatStore((state) => {
-    const op = state.byOperation[opId]
+    const op = state.byOperation[storeKey(opId)]
     return op?.conversations.find((c) => c.id === op.activeConversationId)
   })
+}
+
+/** Id de la conversacion activa (columna de historial: qué fila resaltar). */
+export function useActiveConversationId(opId: string): string | undefined {
+  return useChatStore((state) => state.byOperation[storeKey(opId)]?.activeConversationId)
 }
 
 /** Documentos fuente de una operacion (columna derecha). */
 export function useSourceDocuments(opId: string): ChatSourceDocument[] {
   useChatStore.getState().ensureLoaded(opId)
-  return useChatStore((state) => state.byOperation[opId]?.sourceDocuments ?? [])
+  return useChatStore((state) => state.byOperation[storeKey(opId)]?.sourceDocuments ?? [])
+}
+
+/** Si el agente esta "escribiendo" una respuesta ahora mismo. */
+export function useIsThinking(opId: string): boolean {
+  return useChatStore((state) => state.byOperation[storeKey(opId)]?.thinking ?? false)
 }

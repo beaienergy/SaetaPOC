@@ -1,7 +1,8 @@
-import type { ReactNode } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { Card, CardHeader, PageHeader } from '@/shared/ui'
+import { Pencil } from 'lucide-react'
+import { Button, Card, CardHeader, PageHeader, Textarea } from '@/shared/ui'
 import { AgentConfigButton } from '@/features/agent-config'
 import { formatDateShort } from '@/shared/lib/formatters'
 import type { Locale } from '@/shared/types'
@@ -9,7 +10,7 @@ import type { Citation, InsufficientDataState } from '@/shared/types/domain'
 import { ROUTES } from '@/shared/config/routes'
 import { cn } from '@/shared/lib/utils'
 import { useOverviewRegenerating, useOverviewSnapshot, useSummaryStore } from '../store/summaryStore'
-import type { Milestone } from '../types'
+import type { Milestone, SnapshotField as SnapshotFieldT } from '../types'
 import { CitationList } from './CitationList'
 import { GeneratedMark } from './GeneratedMark'
 import { InsufficientDataNote } from './InsufficientDataNote'
@@ -20,12 +21,18 @@ import './OverviewScreen.css'
  * por el sistema, cada campo con su cita o con el patrón "estado
  * insuficiente" (§1.7). Comparte `agentId="summary-overview"` con Hechos vs
  * conclusiones (§5.3.3) — decisión ya tomada en el guion §6.
+ *
+ * Los 4 campos de texto/lista son editables a mano (lapicito, pedido
+ * explícito): un valor editado sustituye tanto al insuficiente como a la cita
+ * — es la persona, no el agente, la fuente de ese dato a partir de ahí.
  */
 export function OverviewScreen({ opId }: { opId: string }) {
   const { t } = useTranslation('summary')
   const snapshot = useOverviewSnapshot(opId)
   const isRegenerating = useOverviewRegenerating(opId)
   const regenerateOverview = useSummaryStore((s) => s.regenerateOverview)
+  const updateOverviewText = useSummaryStore((s) => s.updateOverviewText)
+  const updateOverviewList = useSummaryStore((s) => s.updateOverviewList)
 
   return (
     <div className="u-stack">
@@ -48,27 +55,19 @@ export function OverviewScreen({ opId }: { opId: string }) {
         />
 
         <div className="overview-fields">
-          <SnapshotField
+          <TextField
             label={t('overview.fields.perimeter')}
-            hasValue={!!snapshot.perimeter.value}
-            citations={snapshot.perimeter.citations}
-            insufficient={snapshot.perimeter.insufficient}
+            field={snapshot.perimeter}
             opId={opId}
-          >
-            <p className="overview-field__text">{snapshot.perimeter.value}</p>
-          </SnapshotField>
+            onSave={(value) => updateOverviewText(opId, 'perimeter', value)}
+          />
 
-          <SnapshotField
+          <ListField
             label={t('overview.fields.parties')}
-            hasValue={!!snapshot.parties.value?.length}
-            citations={snapshot.parties.citations}
-            insufficient={snapshot.parties.insufficient}
+            field={snapshot.parties}
             opId={opId}
-          >
-            <ul className="overview-field__list">
-              {snapshot.parties.value?.map((party) => <li key={party}>{party}</li>)}
-            </ul>
-          </SnapshotField>
+            onSave={(value) => updateOverviewList(opId, 'parties', value)}
+          />
 
           <SnapshotField
             label={t('overview.fields.milestones')}
@@ -80,33 +79,172 @@ export function OverviewScreen({ opId }: { opId: string }) {
             <MilestoneTimeline milestones={snapshot.milestones.value ?? []} />
           </SnapshotField>
 
-          <SnapshotField
+          <TextField
             label={t('overview.fields.status')}
-            hasValue={!!snapshot.status.value}
-            citations={snapshot.status.citations}
-            insufficient={snapshot.status.insufficient}
+            field={snapshot.status}
             opId={opId}
-          >
-            <p className="overview-field__text">{snapshot.status.value}</p>
-          </SnapshotField>
+            onSave={(value) => updateOverviewText(opId, 'status', value)}
+          />
 
-          <SnapshotField
+          <ListField
             label={t('overview.fields.keyIssues')}
-            hasValue={!!snapshot.keyIssuesHighlight.value?.length}
-            citations={snapshot.keyIssuesHighlight.citations}
-            insufficient={snapshot.keyIssuesHighlight.insufficient}
+            field={snapshot.keyIssuesHighlight}
             opId={opId}
-          >
-            <ul className="overview-field__list">
-              {snapshot.keyIssuesHighlight.value?.map((issue) => <li key={issue}>{issue}</li>)}
-            </ul>
-            <Link to={ROUTES.operationSummaryKeyIssues(opId)} className="overview-field__cta">
-              {t('overview.viewKeyIssues')}
-            </Link>
-          </SnapshotField>
+            onSave={(value) => updateOverviewList(opId, 'keyIssuesHighlight', value)}
+            footer={
+              <Link to={ROUTES.operationSummaryKeyIssues(opId)} className="overview-field__cta">
+                {t('overview.viewKeyIssues')}
+              </Link>
+            }
+          />
         </div>
       </Card>
     </div>
+  )
+}
+
+function FieldShell({
+  label,
+  onEdit,
+  children,
+}: {
+  label: string
+  onEdit?: () => void
+  children: ReactNode
+}) {
+  const { t } = useTranslation('summary')
+  return (
+    <div className="overview-field">
+      <div className="overview-field__label-row">
+        <div className="overview-field__label u-eyebrow">{label}</div>
+        {onEdit && (
+          <button
+            type="button"
+            className="overview-field__edit-btn"
+            onClick={onEdit}
+            aria-label={t('overview.editField')}
+            title={t('overview.editField')}
+          >
+            <Pencil size={13} />
+          </button>
+        )}
+      </div>
+      {children}
+    </div>
+  )
+}
+
+function EditorActions({ onCancel, onSave }: { onCancel: () => void; onSave: () => void }) {
+  const { t: tCommon } = useTranslation('common')
+  return (
+    <div className="overview-field__editor-actions">
+      <Button variant="ghost" size="sm" onClick={onCancel}>
+        {tCommon('actions.cancel')}
+      </Button>
+      <Button variant="primary" size="sm" onClick={onSave}>
+        {tCommon('actions.save')}
+      </Button>
+    </div>
+  )
+}
+
+function TextField({
+  label,
+  field,
+  opId,
+  onSave,
+}: {
+  label: string
+  field: SnapshotFieldT<string>
+  opId: string
+  onSave: (value: string) => void
+}) {
+  const [editing, setEditing] = useState(false)
+  const [draft, setDraft] = useState(field.value ?? '')
+
+  function startEdit() {
+    setDraft(field.value ?? '')
+    setEditing(true)
+  }
+  function save() {
+    onSave(draft.trim())
+    setEditing(false)
+  }
+
+  return (
+    <FieldShell label={label} onEdit={editing ? undefined : startEdit}>
+      {editing ? (
+        <div className="overview-field__editor">
+          <Textarea rows={2} value={draft} onChange={(e) => setDraft(e.target.value)} autoFocus />
+          <EditorActions onCancel={() => setEditing(false)} onSave={save} />
+        </div>
+      ) : field.value ? (
+        <div className="overview-field__value">
+          <p className="overview-field__text">{field.value}</p>
+          <CitationList citations={field.citations} opId={opId} />
+        </div>
+      ) : (
+        field.insufficient && (
+          <InsufficientDataNote reason={field.insufficient.reason} suggestedAction={field.insufficient.suggestedAction} />
+        )
+      )}
+    </FieldShell>
+  )
+}
+
+function ListField({
+  label,
+  field,
+  opId,
+  onSave,
+  footer,
+}: {
+  label: string
+  field: SnapshotFieldT<string[]>
+  opId: string
+  onSave: (value: string[]) => void
+  footer?: ReactNode
+}) {
+  const [editing, setEditing] = useState(false)
+  const [draft, setDraft] = useState((field.value ?? []).join('\n'))
+
+  function startEdit() {
+    setDraft((field.value ?? []).join('\n'))
+    setEditing(true)
+  }
+  function save() {
+    onSave(
+      draft
+        .split('\n')
+        .map((line) => line.trim())
+        .filter(Boolean),
+    )
+    setEditing(false)
+  }
+
+  return (
+    <FieldShell label={label} onEdit={editing ? undefined : startEdit}>
+      {editing ? (
+        <div className="overview-field__editor">
+          <Textarea rows={4} value={draft} onChange={(e) => setDraft(e.target.value)} autoFocus />
+          <EditorActions onCancel={() => setEditing(false)} onSave={save} />
+        </div>
+      ) : field.value?.length ? (
+        <div className="overview-field__value">
+          <ul className="overview-field__list">
+            {field.value.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <CitationList citations={field.citations} opId={opId} />
+          {footer}
+        </div>
+      ) : (
+        field.insufficient && (
+          <InsufficientDataNote reason={field.insufficient.reason} suggestedAction={field.insufficient.suggestedAction} />
+        )
+      )}
+    </FieldShell>
   )
 }
 

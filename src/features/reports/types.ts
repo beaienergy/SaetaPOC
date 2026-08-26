@@ -74,7 +74,10 @@ export type ReportBlock =
 
 export interface GeneratedReport {
   id: ID
-  templateId: ReportTemplateId
+  /** Id de una de las 4 plantillas, o el id de un `CustomReportDef` — ambos
+   * son la clave con la que la pantalla de detalle filtra el historial de una
+   * "tarjeta" de informe. */
+  templateId: string
   /** Titulo mostrado en la vista previa y el historial, ej. "Project Helios — IC Memo". */
   title: string
   /** Version dentro de esta plantilla para esta operacion (1, 2, 3…). */
@@ -88,11 +91,15 @@ export interface GeneratedReport {
   citations: Citation[]
 }
 
-/** Que plantilla/secciones/fuentes esta configurando el usuario ahora mismo,
- * antes de pulsar "Generar borrador" — vive en el store, no en useState local,
- * para que no se pierda si el usuario navega al historial y vuelve. */
-export interface ReportDraftSelection {
-  templateId: ReportTemplateId | null
-  sectionIds: ReportSectionKey[]
-  sourceIds: ID[]
+/**
+ * Un informe "a medida" creado desde el popup "Crear nuevo informe" (pedido
+ * explícito): nombre + prompt libre + si se subió una plantilla de
+ * documento. Aparece como una tarjeta más junto a las 4 plantillas fijas.
+ */
+export interface CustomReportDef {
+  id: ID
+  name: string
+  prompt: string
+  hasTemplateFile: boolean
+  createdAt: string
 }

@@ -20,7 +20,7 @@ export function ChatScreen({ opId }: { opId: string }) {
   const { t } = useTranslation('chat')
   const conversation = useActiveConversation(opId)
   const [historyCollapsed, setHistoryCollapsed] = useState(false)
-  const [sourcesCollapsed, setSourcesCollapsed] = useState(false)
+  const [sourcesCollapsed, setSourcesCollapsed] = useState(true)
 
   // Fuentes citadas en la conversacion activa (guion, patron NotebookLM):
   // union de las citas de todos los mensajes de agente, no la lista completa
@@ -40,7 +40,7 @@ export function ChatScreen({ opId }: { opId: string }) {
     <div className="chat-screen">
       <div className="chat-screen__toolbar">
         <Pill variant="outline" size="sm">
-          {t('page.modelRouting')}
+          {t('page.brainConfig')}
         </Pill>
         <AgentConfigButton opId={opId} agentId="chat" />
       </div>

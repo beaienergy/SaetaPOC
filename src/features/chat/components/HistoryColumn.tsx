@@ -4,7 +4,7 @@ import { Plus, Search, PanelLeftClose, PanelLeftOpen } from 'lucide-react'
 import { Button, Input } from '@/shared/ui'
 import { useDebounce } from '@/shared/hooks'
 import { cn } from '@/shared/lib/utils'
-import { useChatStore, useConversations } from '../store/chatStore'
+import { useActiveConversationId, useChatStore, useConversations } from '../store/chatStore'
 import { groupConversationsByDate, type ConversationGroupKey } from '../lib/groupConversations'
 import './HistoryColumn.css'
 
@@ -30,7 +30,7 @@ export function HistoryColumn({
 }) {
   const { t } = useTranslation('chat')
   const conversations = useConversations(opId)
-  const activeConversationId = useChatStore((state) => state.byOperation[opId]?.activeConversationId)
+  const activeConversationId = useActiveConversationId(opId)
   const selectConversation = useChatStore((state) => state.selectConversation)
   const startNewConversation = useChatStore((state) => state.startNewConversation)
 

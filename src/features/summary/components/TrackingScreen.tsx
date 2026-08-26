@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ListTodo } from 'lucide-react'
+import { ListTodo, Pencil } from 'lucide-react'
 import { Badge, DataTable, EmptyState, PageHeader, SegmentedControl, type Column } from '@/shared/ui'
 import { formatDateShort } from '@/shared/lib/formatters'
 import type { Locale } from '@/shared/types'
 import { useOperationTracking, useSummaryStore } from '../store/summaryStore'
 import type { SellerQuestion, TrackingAction, TrackingActionStatus } from '../types'
 import { QUESTION_STATUS_TONE, TRACKING_STATUS_TONE } from '../lib/tones'
+import { ChangePhaseModal } from './ChangePhaseModal'
 import { CitationList } from './CitationList'
 import { PhaseIndicator } from './PhaseIndicator'
 import { StatusBadgeMenu, type StatusMenuOption } from './StatusBadgeMenu'
@@ -23,11 +24,12 @@ const ACTION_STATUSES: TrackingActionStatus[] = ['pending', 'in-progress', 'done
  * comercial disponible en este repo — se sustituye por `PhaseIndicator`.
  */
 export function TrackingScreen({ opId }: { opId: string }) {
-  const { t } = useTranslation('summary')
+  const { t, i18n } = useTranslation('summary')
   const tracking = useOperationTracking(opId)
   const updateActionStatus = useSummaryStore((s) => s.updateActionStatus)
   const updateQuestionStatus = useSummaryStore((s) => s.updateQuestionStatus)
   const [tab, setTab] = useState<Tab>('actions')
+  const [isChangingPhase, setIsChangingPhase] = useState(false)
 
   const statusOptions: StatusMenuOption<TrackingActionStatus>[] = ACTION_STATUSES.map((status) => ({
     value: status,
@@ -67,8 +69,32 @@ export function TrackingScreen({ opId }: { opId: string }) {
     <div className="u-stack">
       <PageHeader title={t('tracking.title')} subtitle={t('tracking.subtitle')} />
 
-      <div className="tracking-head">
+      <div className="tracking-phase">
+        <button
+          type="button"
+          className="tracking-phase__edit-btn"
+          onClick={() => setIsChangingPhase(true)}
+          aria-label={t('tracking.changePhase.title')}
+          title={t('tracking.changePhase.title')}
+        >
+          <Pencil size={14} />
+        </button>
         <PhaseIndicator phase={tracking.phase} />
+        {tracking.phaseNote && (
+          <p className="tracking-phase__note">
+            {t('tracking.changePhase.noteCaption', {
+              date: tracking.phaseChangedAt ? formatDateShort(tracking.phaseChangedAt, i18n.language as Locale) : '',
+            })}{' '}
+            {tracking.phaseNote}
+          </p>
+        )}
+      </div>
+
+      {isChangingPhase && (
+        <ChangePhaseModal opId={opId} currentPhase={tracking.phase} onClose={() => setIsChangingPhase(false)} />
+      )}
+
+      <div className="tracking-head">
         <SegmentedControl<Tab>
           shape="box"
           ariaLabel={t('tracking.tabs.ariaLabel')}

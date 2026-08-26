@@ -24,11 +24,6 @@
   font-weight: 600;
   color: var(--color-text);
 }
-.op-card__target {
-  font-size: var(--text-sm);
-  color: var(--color-text-soft);
-  margin-top: 2px;
-}
 
 .op-card__meta {
   display: flex;
@@ -41,6 +36,18 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
+}
+
+.op-card--syncing {
+  cursor: default;
+}
+.op-card--syncing:hover {
+  box-shadow: none;
+  transform: none;
+}
+.op-card__syncing-hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
 }
 
 .op-grid {

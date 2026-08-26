@@ -42,6 +42,8 @@ export function Header({ opId, onMenuClick }: { opId: string; onMenuClick: () =>
         <ArrowLeft size={16} aria-hidden />
       </Link>
 
+      <span className="header__platform-name">{t('platformName')}</span>
+
       <label className="header__op-switch">
         <span className="u-visually-hidden">{tOps('title')}</span>
         <Select

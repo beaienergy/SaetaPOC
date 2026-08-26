@@ -1,4 +1,7 @@
 export { ChatScreen } from './components/ChatScreen'
 export { CitationChip } from './components/CitationChip'
+export { MessageBubble } from './components/MessageBubble'
+export { TypingIndicator } from './components/TypingIndicator'
 export { useChatStore, useConversations, useActiveConversation, useSourceDocuments } from './store/chatStore'
 export type { ChatConversation, ChatMessage, ChatSourceDocument, ChatRole } from './types'
+export { matchReply } from './api/mockChat'

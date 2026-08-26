@@ -1,6 +1,6 @@
 {
   "title": "Reports",
-  "subtitle": "Draft executive materials from a template, the sections you choose, and cited sources.",
+  "subtitle": "Pick a report type to see its history, or create a new one by telling the agent what to draft.",
   "draftSectionTitle": "Draft a new report",
   "status": {
     "draft": "Draft",
@@ -18,6 +18,25 @@
     "generate": "Generate draft",
     "generating": "Generating…"
   },
+  "create": {
+    "cta": "Create new report",
+    "title": "Create new report",
+    "nameLabel": "Report name",
+    "namePlaceholder": "e.g. Summary for the risk committee",
+    "templateLabel": "Document template (optional)",
+    "templateDropTitle": "Drag a file here, or click to upload",
+    "templateDropHint": "The agent will follow its structure when drafting — optional.",
+    "removeTemplate": "Remove template",
+    "promptLabel": "What should the agent do?",
+    "promptPlaceholder": "Describe the content, tone and structure you want for this report…",
+    "cancel": "Cancel",
+    "submit": "Generate report",
+    "generating": "Generating…"
+  },
+  "detail": {
+    "back": "Back to Reports",
+    "selectHint": "Pick a version from the history to view its content."
+  },
   "preview": {
     "meta": "Version {{version}} · {{date}} · {{author}}"
   },
@@ -27,8 +46,9 @@
     "open": "Source: {{document}}"
   },
   "history": {
-    "title": "Version history",
-    "empty": "No reports generated yet.",
+    "title": "History",
+    "empty": "No reports of this type generated yet.",
+    "view": "View",
     "viewing": "Viewing",
     "columns": {
       "report": "Report",

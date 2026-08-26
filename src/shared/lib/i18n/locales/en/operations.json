@@ -15,6 +15,15 @@
   },
   "newOperation": {
     "cta": "+ Create Project",
-    "hint": "Not wired up in this demo"
+    "modalTitle": "Create project",
+    "nameLabel": "Project name",
+    "namePlaceholder": "e.g. Project Aurora",
+    "connect": "Connect to SharePoint",
+    "connecting": "Connecting…",
+    "connected": "Connected to SharePoint",
+    "connectedPath": "Linked folder: /M&A Projects/{{name}}",
+    "submit": "Create project",
+    "syncing": "Syncing",
+    "syncingHint": "Ingesting documentation from SharePoint — this can take a few minutes."
   }
 }

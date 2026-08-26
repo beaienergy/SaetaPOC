@@ -15,6 +15,15 @@
   },
   "newOperation": {
     "cta": "+ Crear Proyecto",
-    "hint": "No disponible en esta demo"
+    "modalTitle": "Crear proyecto",
+    "nameLabel": "Nombre del proyecto",
+    "namePlaceholder": "ej. Project Aurora",
+    "connect": "Conectar con SharePoint",
+    "connecting": "Conectando…",
+    "connected": "Conectado a SharePoint",
+    "connectedPath": "Carpeta enlazada: /Proyectos M&A/{{name}}",
+    "submit": "Crear proyecto",
+    "syncing": "Sincronizando",
+    "syncingHint": "Ingestando documentación desde SharePoint — puede tardar unos minutos."
   }
 }

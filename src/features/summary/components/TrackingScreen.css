@@ -1,7 +1,45 @@
+.tracking-phase {
+  position: relative;
+  padding: var(--space-5) var(--space-6);
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+.tracking-phase .phase-stepper {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.tracking-phase__edit-btn {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+}
+.tracking-phase__edit-btn:hover {
+  background: var(--color-surface-inset);
+  color: var(--color-primary);
+}
+.tracking-phase__note {
+  max-width: 720px;
+  margin: var(--space-4) auto 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
 .tracking-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: var(--space-4);
   flex-wrap: wrap;
   margin-bottom: var(--space-4);

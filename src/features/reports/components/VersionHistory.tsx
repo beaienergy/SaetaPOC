@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next'
-import { History } from 'lucide-react'
-import { Badge, CardHeader, DataTable, Pill } from '@/shared/ui'
-import type { Column } from '@/shared/ui'
-import { formatDateShort } from '@/shared/lib/formatters'
+import { Eye } from 'lucide-react'
+import { Badge, EmptyState } from '@/shared/ui'
+import { formatDate } from '@/shared/lib/formatters'
 import type { Locale } from '@/shared/types'
+import { cn } from '@/shared/lib/utils'
 import type { GeneratedReport, ReportStatus } from '../types'
 import './VersionHistory.css'
 
@@ -18,62 +18,43 @@ interface VersionHistoryProps {
   onView: (reportId: string) => void
 }
 
-/** Historial de versiones de informes generados (guion §5.5). */
+/**
+ * Historial de versiones de una tarjeta de informe (guion §5.5), como
+ * columna izquierda del detalle (pedido explícito): fecha de creación +
+ * botón "Ver" que expande el contenido a la derecha.
+ */
 export function VersionHistory({ reports, activeReportId, onView }: VersionHistoryProps) {
   const { t, i18n } = useTranslation('reports')
   const locale = i18n.language as Locale
 
-  const columns: Column<GeneratedReport>[] = [
-    {
-      key: 'title',
-      header: t('history.columns.report'),
-      render: (report) => (
-        <span className="version-history__title">
-          {report.title}
-          {report.id === activeReportId && <Pill variant="accent">{t('history.viewing')}</Pill>}
-        </span>
-      ),
-    },
-    {
-      key: 'version',
-      header: t('history.columns.version'),
-      align: 'center',
-      width: '90px',
-      sortValue: (report) => report.version,
-      render: (report) => <span className="u-mono">v{report.version}</span>,
-    },
-    {
-      key: 'status',
-      header: t('history.columns.status'),
-      width: '110px',
-      render: (report) => <Badge tone={STATUS_TONE[report.status]}>{t(`status.${report.status}`)}</Badge>,
-    },
-    {
-      key: 'generatedAt',
-      header: t('history.columns.generated'),
-      width: '160px',
-      sortValue: (report) => new Date(report.generatedAt).getTime(),
-      render: (report) => formatDateShort(report.generatedAt, locale),
-    },
-    {
-      key: 'generatedBy',
-      header: t('history.columns.author'),
-      width: '170px',
-      render: (report) => report.generatedBy,
-    },
-  ]
+  if (reports.length === 0) {
+    return <EmptyState message={t('history.empty')} />
+  }
 
   return (
-    <div className="version-history">
-      <CardHeader title={t('history.title')} icon={<History size={16} aria-hidden />} />
-      <DataTable
-        columns={columns}
-        data={reports}
-        rowKey={(report) => report.id}
-        onRowClick={(report) => onView(report.id)}
-        emptyMessage={t('history.empty')}
-        defaultSort={{ key: 'generatedAt', dir: 'desc' }}
-      />
-    </div>
+    <ul className="version-history">
+      {reports.map((report) => {
+        const isActive = report.id === activeReportId
+        return (
+          <li key={report.id} className={cn('version-history__item', isActive && 'is-active')}>
+            <div className="version-history__item-head">
+              <span className="u-mono">v{report.version}</span>
+              <Badge tone={STATUS_TONE[report.status]}>{t(`status.${report.status}`)}</Badge>
+            </div>
+            <span className="version-history__item-date">{formatDate(report.generatedAt, locale)}</span>
+            <span className="version-history__item-author">{report.generatedBy}</span>
+            <button
+              type="button"
+              className="version-history__item-view"
+              onClick={() => onView(report.id)}
+              aria-pressed={isActive}
+            >
+              <Eye size={13} aria-hidden />
+              {isActive ? t('history.viewing') : t('history.view')}
+            </button>
+          </li>
+        )
+      })}
+    </ul>
   )
 }

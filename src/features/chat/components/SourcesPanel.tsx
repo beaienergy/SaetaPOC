@@ -43,6 +43,7 @@ export function SourcesPanel({
           <PanelRightOpen size={16} />
         </button>
         {citations.length > 0 && <span className="sources-panel__rail-count">{citations.length}</span>}
+        <span className="sources-panel__rail-title">{t('sources.title')}</span>
       </div>
     )
   }

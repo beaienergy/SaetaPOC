@@ -1,0 +1,31 @@
+.fact-discussion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.fact-discussion__context {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fact-discussion__thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-height: 360px;
+  overflow-y: auto;
+  padding: var(--space-1);
+}
+
+.fact-discussion__composer {
+  display: flex;
+  gap: var(--space-2);
+}
+.fact-discussion__composer > :first-child {
+  flex: 1;
+}

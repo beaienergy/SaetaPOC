@@ -125,6 +125,11 @@ export const DEAL_PHASES: DealPhase[] = ['screening', 'due-diligence', 'negotiat
 
 export interface OperationTracking {
   phase: DealPhase
+  /** Contexto opcional dejado al cambiar la fase manualmente — quién decide
+   * qué, sin backend real detrás (guion §1.7-adyacente: honestidad en vez de
+   * un audit-log completo que esta POC no necesita). */
+  phaseNote?: string
+  phaseChangedAt?: string
   actions: TrackingAction[]
   questions: SellerQuestion[]
 }

@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Sparkles, RefreshCw } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import { Button } from '@/shared/ui'
 import { formatDate } from '@/shared/lib/formatters'
 import type { Locale } from '@/shared/types'
@@ -34,7 +34,7 @@ export function GeneratedMark({
       <Button
         variant="ghost"
         size="sm"
-        icon={<RefreshCw size={14} aria-hidden />}
+        icon={<Sparkles size={14} aria-hidden />}
         loading={isRegenerating}
         onClick={onRegenerate}
       >

@@ -1,6 +1,6 @@
 {
   "title": "Informes",
-  "subtitle": "Redacta materiales ejecutivos a partir de una plantilla, las secciones que elijas y fuentes citadas.",
+  "subtitle": "Elige un tipo de informe para ver su historial, o crea uno nuevo describiéndole al agente qué tiene que redactar.",
   "draftSectionTitle": "Redactar un nuevo informe",
   "status": {
     "draft": "Borrador",
@@ -18,6 +18,25 @@
     "generate": "Generar borrador",
     "generating": "Generando…"
   },
+  "create": {
+    "cta": "Crear nuevo informe",
+    "title": "Crear nuevo informe",
+    "nameLabel": "Nombre del informe",
+    "namePlaceholder": "ej. Resumen para el comité de riesgos",
+    "templateLabel": "Plantilla de documento (opcional)",
+    "templateDropTitle": "Arrastra un fichero o haz clic para subirlo",
+    "templateDropHint": "El agente seguirá su estructura al redactar — opcional.",
+    "removeTemplate": "Quitar plantilla",
+    "promptLabel": "¿Qué tiene que hacer el agente?",
+    "promptPlaceholder": "Describe el contenido, tono y estructura que quieres para este informe…",
+    "cancel": "Cancelar",
+    "submit": "Generar informe",
+    "generating": "Generando…"
+  },
+  "detail": {
+    "back": "Volver a Informes",
+    "selectHint": "Elige una versión del historial para ver su contenido."
+  },
   "preview": {
     "meta": "Versión {{version}} · {{date}} · {{author}}"
   },
@@ -27,8 +46,9 @@
     "open": "Fuente: {{document}}"
   },
   "history": {
-    "title": "Historial de versiones",
-    "empty": "Todavía no se ha generado ningún informe.",
+    "title": "Historial",
+    "empty": "Todavía no se ha generado ningún informe de este tipo.",
+    "view": "Ver",
     "viewing": "Viendo",
     "columns": {
       "report": "Informe",

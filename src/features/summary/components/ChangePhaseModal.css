@@ -1,0 +1,23 @@
+.change-phase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.change-phase__confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin: calc(var(--space-2) * -1) 0 0;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-warning-bg, var(--color-surface-inset));
+  color: var(--color-warning);
+  font-size: var(--text-sm);
+}
+
+.change-phase__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}

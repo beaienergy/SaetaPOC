@@ -5,7 +5,6 @@ import { getFinancialModelData } from '../api/mockFinancialModel'
 import { WorkingCopyBanner } from './WorkingCopyBanner'
 import { FinancialModelFileList } from './FinancialModelFileList'
 import { AuditPanel } from './AuditPanel'
-import { SensitivitiesTable } from './SensitivitiesTable'
 
 /**
  * Modelo financiero (guion §5.4, UC-07): banner fijo de "trabajando sobre una
@@ -29,8 +28,6 @@ export function FinancialModelScreen({ opId }: { opId: string }) {
       <FinancialModelFileList files={data.files} />
 
       <AuditPanel opId={opId} findings={data.findings} />
-
-      <SensitivitiesTable rows={data.sensitivities} />
     </div>
   )
 }

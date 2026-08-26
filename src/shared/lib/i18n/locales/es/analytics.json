@@ -75,6 +75,20 @@
     }
   },
   "memory": {
+    "document": {
+      "title": "{{project}} Brain Memory",
+      "newVersion": "Crear nueva versión",
+      "newVersionFrom": "Nueva versión, a partir de v{{version}}",
+      "save": "Guardar nueva versión",
+      "versionBadge": "v{{version}}",
+      "latest": "Última versión",
+      "notLatest": "Versión activa antigua",
+      "active": "Activa",
+      "editedBy": "Editado por {{author}} · {{date}}",
+      "versionsTitle": "Historial de versiones",
+      "activate": "Activar esta versión"
+    },
+    "proposalsTitle": "Propuestas de memoria",
     "empty": "Todavía no hay propuestas de memoria para esta operación.",
     "before": "Antes",
     "after": "Después",

@@ -2,9 +2,10 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Send } from 'lucide-react'
 import { Button, Textarea } from '@/shared/ui'
+import type { Locale } from '@/shared/types'
 import { getOperation } from '@/features/operations'
-import { useActiveConversation, useChatStore } from '../store/chatStore'
-import { MOCK_SUGGESTIONS } from '../api/mockChat'
+import { useActiveConversation, useChatStore, useIsThinking } from '../store/chatStore'
+import { getSuggestions } from '../api/mockChat'
 import { MessageBubble } from './MessageBubble'
 import { TypingIndicator } from './TypingIndicator'
 import './ChatThread.css'
@@ -12,9 +13,9 @@ import './ChatThread.css'
 /** Columna central del patron NotebookLM (guion §5.1): hilo de mensajes,
  * sugerencias de arranque especificas de M&A y el compositor. */
 export function ChatThread({ opId }: { opId: string }) {
-  const { t } = useTranslation('chat')
+  const { t, i18n } = useTranslation('chat')
   const conversation = useActiveConversation(opId)
-  const thinking = useChatStore((state) => state.byOperation[opId]?.thinking ?? false)
+  const thinking = useIsThinking(opId)
   const sendMessage = useChatStore((state) => state.sendMessage)
   // "{{project}} Brain" en vez de un nombre de agente generico (pedido
   // explicito): personaliza la burbuja del agente sin depender de que
@@ -28,7 +29,7 @@ export function ChatThread({ opId }: { opId: string }) {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' })
   }, [conversation?.messages.length, thinking])
 
-  const suggestions = MOCK_SUGGESTIONS[opId] ?? []
+  const suggestions = getSuggestions(opId, i18n.language as Locale)
   const showSuggestions = (conversation?.messages.length ?? 0) === 0 && !thinking
 
   function handleSend(text: string) {

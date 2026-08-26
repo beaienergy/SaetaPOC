@@ -6,7 +6,7 @@
   "generated": {
     "label": "Auto-generated",
     "at": "Last analysis: {{date}}",
-    "regenerate": "Regenerate"
+    "regenerate": "Regenerate summary with AI"
   },
   "insufficient": {
     "requestHuman": "Request human input",
@@ -15,7 +15,7 @@
     "documentsRequested": "Documentation requested"
   },
   "overview": {
-    "title": "Overview",
+    "title": "Operation summary",
     "subtitle": "System-generated snapshot of the operation — every field cites its source, or says why it can't yet.",
     "snapshotTitle": "Operation snapshot",
     "fields": {
@@ -25,7 +25,8 @@
       "status": "Status",
       "keyIssues": "Key issues"
     },
-    "viewKeyIssues": "View full Key Issue List →"
+    "viewKeyIssues": "View full Key Issue List →",
+    "editField": "Edit manually"
   },
   "keyIssues": {
     "title": "Key Issue List",
@@ -69,7 +70,18 @@
       "hypothesis": "Unconfirmed ideas, with a note on what would confirm them."
     },
     "convertToIssue": "Convert to Key Issue",
-    "converted": "Added to Key Issue List"
+    "converted": "Added to Key Issue List",
+    "notePlaceholder": "Note (optional)",
+    "filter": {
+      "ariaLabel": "Filter by type",
+      "all": "All"
+    },
+    "discussion": {
+      "cta": "Discuss in chat",
+      "agentLabel": "Brain",
+      "placeholder": "Ask about this point…",
+      "send": "Send"
+    }
   },
   "tracking": {
     "title": "Tracking",
@@ -103,6 +115,15 @@
       "due-diligence": "Due diligence",
       "negotiation": "Negotiation",
       "closed": "Closed"
+    },
+    "changePhase": {
+      "title": "Change operation phase",
+      "phaseLabel": "New phase",
+      "confirmMessage": "You're about to change the phase from \"{{from}}\" to \"{{to}}\".",
+      "noteLabel": "Context (optional)",
+      "notePlaceholder": "Why is the phase changing?",
+      "confirm": "Confirm change",
+      "noteCaption": "Manually changed on {{date}}:"
     }
   }
 }

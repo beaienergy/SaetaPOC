@@ -24,31 +24,9 @@
   box-shadow: var(--shadow-card-hover);
 }
 
-.report-template-card.is-selected {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
-}
-
-.report-template-card__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .report-template-card__icon {
   display: inline-flex;
   color: var(--color-primary);
-}
-
-.report-template-card__check {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: var(--radius-full);
-  background: var(--color-primary);
-  color: var(--color-text-on-primary);
 }
 
 .report-template-card__name {
@@ -75,4 +53,33 @@
 .report-template-card__count {
   font-size: var(--text-xs);
   color: var(--color-text-muted);
+}
+
+.report-template-card--new {
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-style: dashed;
+  border-color: var(--color-border-strong);
+  color: var(--color-text-soft);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  min-height: 140px;
+  background: var(--color-surface-inset);
+}
+.report-template-card--new:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-subtle);
+}
+.report-template-card__new-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  color: inherit;
 }

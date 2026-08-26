@@ -1,6 +1,6 @@
 import type { BadgeTone } from '@/shared/ui'
 import type { Severity } from '@/shared/types/domain'
-import type { KeyIssueStatus, QuestionStatus, TrackingActionStatus } from '../types'
+import type { FactKind, KeyIssueStatus, QuestionStatus, TrackingActionStatus } from '../types'
 
 // Mapeo estado de dominio -> tono de Badge (guion: el mapeo vive en la
 // feature, no en `Badge`). `escalated` es el único `danger` a propósito: es
@@ -28,4 +28,10 @@ export const SEVERITY_TONE: Record<Severity, BadgeTone> = {
   medium: 'warning',
   high: 'danger',
   critical: 'danger',
+}
+
+export const FACT_KIND_TONE: Record<FactKind, BadgeTone> = {
+  fact: 'success',
+  inference: 'info',
+  hypothesis: 'warning',
 }

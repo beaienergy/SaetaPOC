@@ -6,7 +6,7 @@
   "generated": {
     "label": "Generado automáticamente",
     "at": "Último análisis: {{date}}",
-    "regenerate": "Regenerar"
+    "regenerate": "Regenerar resumen con IA"
   },
   "insufficient": {
     "requestHuman": "Pedir intervención humana",
@@ -15,7 +15,7 @@
     "documentsRequested": "Documentación solicitada"
   },
   "overview": {
-    "title": "Resumen",
+    "title": "Resumen de la operación",
     "subtitle": "Ficha de operación generada por el sistema — cada campo cita su fuente, o explica por qué todavía no puede.",
     "snapshotTitle": "Ficha de la operación",
     "fields": {
@@ -25,7 +25,8 @@
       "status": "Estado",
       "keyIssues": "Asuntos clave"
     },
-    "viewKeyIssues": "Ver Key Issue List completa →"
+    "viewKeyIssues": "Ver Key Issue List completa →",
+    "editField": "Editar manualmente"
   },
   "keyIssues": {
     "title": "Key Issue List",
@@ -69,7 +70,18 @@
       "hypothesis": "Ideas sin confirmar, con una nota de qué las confirmaría."
     },
     "convertToIssue": "Convertir en Key Issue",
-    "converted": "Añadido a la Key Issue List"
+    "converted": "Añadido a la Key Issue List",
+    "notePlaceholder": "Nota (opcional)",
+    "filter": {
+      "ariaLabel": "Filtrar por tipo",
+      "all": "Todos"
+    },
+    "discussion": {
+      "cta": "Discutir en el chat",
+      "agentLabel": "Brain",
+      "placeholder": "Pregunta sobre este punto…",
+      "send": "Enviar"
+    }
   },
   "tracking": {
     "title": "Seguimiento",
@@ -103,6 +115,15 @@
       "due-diligence": "Due diligence",
       "negotiation": "Negociación",
       "closed": "Cerrada"
+    },
+    "changePhase": {
+      "title": "Cambiar fase de la operación",
+      "phaseLabel": "Nueva fase",
+      "confirmMessage": "Vas a cambiar la fase de \"{{from}}\" a \"{{to}}\".",
+      "noteLabel": "Contexto (opcional)",
+      "notePlaceholder": "¿Por qué cambia la fase?",
+      "confirm": "Confirmar cambio",
+      "noteCaption": "Cambiada manualmente el {{date}}:"
     }
   }
 }

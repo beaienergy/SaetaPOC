@@ -11,5 +11,5 @@ export type {
   GeneratedReport,
   ReportStatus,
   ReportExportFormat,
-  ReportDraftSelection,
+  CustomReportDef,
 } from './types'

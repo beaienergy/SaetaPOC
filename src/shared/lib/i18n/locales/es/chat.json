@@ -1,6 +1,6 @@
 {
   "page": {
-    "modelRouting": "Modelo: enrutado automáticamente por coste/calidad"
+    "brainConfig": "Configuración del brain"
   },
   "history": {
     "newConversation": "Nueva conversación",

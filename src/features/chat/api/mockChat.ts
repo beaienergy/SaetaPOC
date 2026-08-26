@@ -1,5 +1,13 @@
+import type { Locale } from '@/shared/types'
 import type { Citation } from '@/shared/types/domain'
 import type { ChatConversation, ChatSourceDocument } from '../types'
+import {
+  DEFAULT_FALLBACK_ES,
+  FALLBACK_ANSWERS_ES,
+  MOCK_CONVERSATIONS_ES,
+  MOCK_QA_ES,
+  MOCK_SUGGESTIONS_ES,
+} from './mockChat.es'
 
 /**
  * Mock de Chat + historial (guion §5.1), keyed por los mismos ids de
@@ -7,8 +15,12 @@ import type { ChatConversation, ChatSourceDocument } from '../types'
  * operacion mas rica en contenido (mas conversaciones, mas fuentes), Solstice
  * la mas ligera y cerrada — misma nota de siembra que `agent-config`.
  *
- * Todo el contenido conversacional esta en ingles (requisito RFP: la demo se
- * ensena en ingles), aunque el chrome de la pantalla es bilingue via i18n.
+ * El contenido conversacional por defecto (este fichero) esta en ingles
+ * (requisito RFP: la demo se ensena en ingles) — pero, a peticion explicita,
+ * cuando el idioma de la interfaz esta en español el chat entero (mensajes,
+ * sugerencias, banco de respuestas) se sirve desde `mockChat.es.ts` en su
+ * lugar. `MOCK_SOURCE_DOCUMENTS` es la excepcion: nombres de fichero reales
+ * del data room, no se traducen en ningun idioma.
  */
 
 // ---------------------------------------------------------------------------
@@ -168,7 +180,7 @@ export const MOCK_SOURCE_DOCUMENTS: Record<string, ChatSourceDocument[]> = {
 // Sugerencias de arranque (guion §5.1: "especificas de M&A")
 // ---------------------------------------------------------------------------
 
-export const MOCK_SUGGESTIONS: Record<string, string[]> = {
+const MOCK_SUGGESTIONS_EN: Record<string, string[]> = {
   helios: [
     'What are the key risks in this operation?',
     'Summarize the grid connection status across all sites.',
@@ -193,7 +205,7 @@ export const MOCK_SUGGESTIONS: Record<string, string[]> = {
 // Historial de conversaciones previas (columna izquierda + hilo central)
 // ---------------------------------------------------------------------------
 
-export const MOCK_CONVERSATIONS: Record<string, ChatConversation[]> = {
+const MOCK_CONVERSATIONS_EN: Record<string, ChatConversation[]> = {
   helios: [
     {
       id: 'conv-helios-1',
@@ -567,7 +579,7 @@ interface QaEntry {
   citations: Citation[]
 }
 
-const MOCK_QA: Record<string, QaEntry[]> = {
+const MOCK_QA_EN: Record<string, QaEntry[]> = {
   helios: [
     {
       keywords: ['key risk', 'main risk'],
@@ -803,7 +815,7 @@ const MOCK_QA: Record<string, QaEntry[]> = {
   ],
 }
 
-const FALLBACK_ANSWERS: Record<string, string> = {
+const FALLBACK_ANSWERS_EN: Record<string, string> = {
   helios:
     'I couldn\'t find a direct match for that in the documentation indexed for Project Helios. Try asking ' +
     'about grid connection, land tenure, the PPA vs. the financial model, or employment liabilities — or ' +
@@ -818,21 +830,37 @@ const FALLBACK_ANSWERS: Record<string, string> = {
     'status, or request the missing documentation.',
 }
 
-const DEFAULT_FALLBACK =
+const DEFAULT_FALLBACK_EN =
   'I don\'t have enough indexed documentation to answer that for this operation. Consider requesting the ' +
   'missing document rather than guessing.'
 
 /**
  * Simula la respuesta del agente (guion §5.1): coincidencia simple por
- * palabra clave contra `MOCK_QA`, sin streaming ni LLM real. Si no hay
- * coincidencia, cae a una respuesta que declara explicitamente la falta de
- * informacion — mismo principio que el prompt por defecto del agente de chat
- * (`features/agent-config`): nunca inventar.
+ * palabra clave contra el banco de QA del idioma activo, sin streaming ni
+ * LLM real. Si no hay coincidencia, cae a una respuesta que declara
+ * explicitamente la falta de informacion — mismo principio que el prompt por
+ * defecto del agente de chat (`features/agent-config`): nunca inventar.
  */
-export function matchReply(opId: string, question: string): { content: string; citations: Citation[] } {
-  const bank = MOCK_QA[opId] ?? []
+export function matchReply(
+  opId: string,
+  question: string,
+  locale: Locale = 'en',
+): { content: string; citations: Citation[] } {
+  const bank = (locale === 'es' ? MOCK_QA_ES : MOCK_QA_EN)[opId] ?? []
   const q = question.toLowerCase()
   const hit = bank.find((entry) => entry.keywords.some((keyword) => q.includes(keyword)))
   if (hit) return { content: hit.content, citations: hit.citations }
-  return { content: FALLBACK_ANSWERS[opId] ?? DEFAULT_FALLBACK, citations: [] }
+  const fallbacks = locale === 'es' ? FALLBACK_ANSWERS_ES : FALLBACK_ANSWERS_EN
+  const defaultFallback = locale === 'es' ? DEFAULT_FALLBACK_ES : DEFAULT_FALLBACK_EN
+  return { content: fallbacks[opId] ?? defaultFallback, citations: [] }
+}
+
+/** Sugerencias de arranque del hilo de chat, en el idioma activo. */
+export function getSuggestions(opId: string, locale: Locale): string[] {
+  return (locale === 'es' ? MOCK_SUGGESTIONS_ES : MOCK_SUGGESTIONS_EN)[opId] ?? []
+}
+
+/** Historial de conversaciones sembradas de una operación, en el idioma activo. */
+export function getConversations(opId: string, locale: Locale): ChatConversation[] {
+  return (locale === 'es' ? MOCK_CONVERSATIONS_ES : MOCK_CONVERSATIONS_EN)[opId] ?? []
 }

@@ -1,6 +1,6 @@
 {
   "page": {
-    "modelRouting": "Model: routed automatically by cost/quality"
+    "brainConfig": "Brain configuration"
   },
   "history": {
     "newConversation": "New conversation",

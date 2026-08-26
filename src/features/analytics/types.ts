@@ -131,3 +131,21 @@ export interface MemoryProposal {
   createdAt: string
   history: MemoryAuditEntry[]
 }
+
+/**
+ * Una versión del documento de memoria del brain (pedido explícito, encima de
+ * las propuestas individuales de arriba): el texto completo que el agente
+ * usa como contexto para esta operación, en un momento dado. Editar el texto
+ * no sobrescribe la versión activa — crea una nueva y la activa, igual que
+ * "antes/después" ya hace con las propuestas; activar una versión antigua no
+ * borra las más nuevas, solo cambia cuál está en uso.
+ */
+export interface BrainMemoryVersion {
+  id: ID
+  version: number
+  content: string
+  createdAt: string
+  createdBy: string
+  /** Por qué se creó esta versión — vacío si fue una edición manual directa. */
+  note?: string
+}

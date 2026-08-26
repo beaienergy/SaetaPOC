@@ -123,3 +123,13 @@
   border-radius: var(--radius-full);
   padding: 1px 7px;
 }
+.sources-panel__rail-title {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
