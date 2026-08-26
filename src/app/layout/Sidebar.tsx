@@ -59,6 +59,7 @@ export function Sidebar({ opId, onNavigate }: { opId: string; onNavigate?: () =>
                   key={item.key}
                   to={item.to}
                   onClick={onNavigate}
+                  data-tour={`sidebar-${item.key}`}
                   className={({ isActive }) =>
                     cn('sidebar__link', isActive && 'sidebar__link--active')
                   }

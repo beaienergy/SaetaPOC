@@ -1,0 +1,37 @@
+{
+  "skip": "Saltar",
+  "back": "Atrás",
+  "next": "Siguiente",
+  "finish": "Entendido",
+  "stepCounter": "{{current}} / {{total}}",
+  "welcome": {
+    "title": "Bienvenido a {{project}}",
+    "body": "Un repaso rápido de cada apartado antes de empezar — {{count}} pasos, medio minuto."
+  },
+  "steps": {
+    "chat": {
+      "title": "Chat",
+      "body": "Pregunta lo que quieras sobre la operación. El agente cita siempre la fuente de cada respuesta y dice explícitamente cuando no tiene suficiente documentación — nunca inventa."
+    },
+    "documents": {
+      "title": "Documentación del proyecto",
+      "body": "Todos los documentos de la operación, su estado de indexado, y los gaps o contradicciones que el agente detecta entre ellos."
+    },
+    "summary": {
+      "title": "Resumen",
+      "body": "Ficha generada de la operación, la Key Issue List, hechos vs conclusiones del agente, y el seguimiento de acciones y preguntas para vendedor/asesores."
+    },
+    "financialModel": {
+      "title": "Modelo financiero",
+      "body": "Auditoría de consistencia del modelo financiero — siempre sobre una copia de trabajo, nunca sobre el original — con cada hallazgo citado."
+    },
+    "reports": {
+      "title": "Informes",
+      "body": "Genera informes ejecutivos a partir de una plantilla o describiendo tú mismo qué necesitas, con historial de versiones y exportación."
+    },
+    "analytics": {
+      "title": "Analítica IA",
+      "body": "Coste y uso por caso de uso, trazas de ejecución paso a paso, y la memoria del brain que aprende de cada operación — visible solo para el rol Admin."
+    }
+  }
+}

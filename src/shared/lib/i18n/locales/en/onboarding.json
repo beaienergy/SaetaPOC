@@ -1,0 +1,37 @@
+{
+  "skip": "Skip",
+  "back": "Back",
+  "next": "Next",
+  "finish": "Got it",
+  "stepCounter": "{{current}} / {{total}}",
+  "welcome": {
+    "title": "Welcome to {{project}}",
+    "body": "A quick tour of each section before you start — {{count}} steps, half a minute."
+  },
+  "steps": {
+    "chat": {
+      "title": "Chat",
+      "body": "Ask anything about the operation. The agent always cites its source and explicitly says when it doesn't have enough documentation — it never makes things up."
+    },
+    "documents": {
+      "title": "Project Documentation",
+      "body": "Every document in the operation, its indexing status, and the gaps or contradictions the agent finds between them."
+    },
+    "summary": {
+      "title": "Summary",
+      "body": "A generated snapshot of the operation, the Key Issue List, facts vs. the agent's conclusions, and tracking of actions and seller/advisor questions."
+    },
+    "financialModel": {
+      "title": "Financial model",
+      "body": "Consistency audit of the financial model — always on a working copy, never the original — with every finding cited."
+    },
+    "reports": {
+      "title": "Reports",
+      "body": "Generate executive reports from a template or by describing what you need yourself, with version history and export."
+    },
+    "analytics": {
+      "title": "AI Analytics",
+      "body": "Cost and usage per use case, step-by-step execution traces, and the brain memory that learns from every operation — visible to the Admin role only."
+    }
+  }
+}

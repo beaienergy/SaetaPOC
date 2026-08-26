@@ -14,6 +14,7 @@ import esFinancialModel from './locales/es/financialModel.json'
 import esReports from './locales/es/reports.json'
 import esAnalytics from './locales/es/analytics.json'
 import esAgentConfig from './locales/es/agentConfig.json'
+import esOnboarding from './locales/es/onboarding.json'
 
 import enCommon from './locales/en/common.json'
 import enNav from './locales/en/nav.json'
@@ -27,6 +28,7 @@ import enFinancialModel from './locales/en/financialModel.json'
 import enReports from './locales/en/reports.json'
 import enAnalytics from './locales/en/analytics.json'
 import enAgentConfig from './locales/en/agentConfig.json'
+import enOnboarding from './locales/en/onboarding.json'
 
 // Anadir un namespace: el import de sus dos JSON y su entrada en `es` y `en`.
 // La lista `ns` de i18next se deriva de aqui, no se repite.
@@ -44,6 +46,7 @@ const resources = {
     reports: esReports,
     analytics: esAnalytics,
     agentConfig: esAgentConfig,
+    onboarding: esOnboarding,
   },
   en: {
     common: enCommon,
@@ -58,6 +61,7 @@ const resources = {
     reports: enReports,
     analytics: enAnalytics,
     agentConfig: enAgentConfig,
+    onboarding: enOnboarding,
   },
 } as const
 

@@ -6,4 +6,5 @@ export const STORAGE_KEYS = {
   locale: 'saeta.locale',
   session: 'saeta.mockSession',
   currentOperation: 'saeta.currentOperation',
+  onboardingSeen: 'saeta.onboardingSeen',
 } as const

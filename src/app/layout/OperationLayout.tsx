@@ -7,6 +7,7 @@ import { getOperation, useOperationStore } from '@/features/operations'
 import { ROUTES } from '@/shared/config/routes'
 import { Sidebar } from './Sidebar'
 import { Header } from './Header'
+import { OnboardingTour } from './OnboardingTour'
 // El CSS del chrome (esqueleto, sidebar y cabecera) vive en
 // `shared/styles/app-chrome.css`, cargado siempre desde `shared/styles/index.css`.
 
@@ -53,6 +54,8 @@ export function OperationLayout() {
           </Suspense>
         </main>
       </div>
+
+      <OnboardingTour opId={opId} />
     </div>
   )
 }
