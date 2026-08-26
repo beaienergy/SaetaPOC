@@ -1,0 +1,30 @@
+{
+  "backToOperations": "Volver a operaciones",
+  "sections": {
+    "operation": "Operación"
+  },
+  "items": {
+    "chat": "Chat",
+    "documents": "Documentación del proyecto",
+    "summary": "Resumen",
+    "financialModel": "Modelo financiero",
+    "reports": "Informes",
+    "analytics": "Analítica IA"
+  },
+  "documentsNav": {
+    "documents": "Documentos",
+    "gaps": "Gaps y contradicciones",
+    "knowledge": "Conocimiento base"
+  },
+  "summaryNav": {
+    "overview": "Procesamiento interno",
+    "keyIssues": "Key Issue List",
+    "facts": "Hechos vs conclusiones",
+    "tracking": "Seguimiento"
+  },
+  "analyticsNav": {
+    "cost": "Coste y uso",
+    "traces": "Trazas de ejecución",
+    "memory": "Memoria a largo plazo"
+  }
+}

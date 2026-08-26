@@ -1,0 +1,14 @@
+.agent-config-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  flex: none;
+}
+.agent-config-trigger:hover {
+  background: var(--color-surface-inset);
+  color: var(--color-text);
+}

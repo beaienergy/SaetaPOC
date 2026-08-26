@@ -1,0 +1,59 @@
+{
+  "title": "Modelo financiero",
+  "subtitle": "Auditoría de consistencia sobre la copia de trabajo del modelo financiero — fórmulas rotas, enlaces externos, valores hardcodeados y circularidades.",
+  "banner": {
+    "title": "Trabajando sobre una copia.",
+    "body": "El archivo original del modelo financiero nunca se modifica — todas las comprobaciones de esta pantalla corren sobre una copia de trabajo aislada."
+  },
+  "files": {
+    "title": "Modelos financieros cargados",
+    "subtitle": "Archivos ingeridos para esta operación, con su versión.",
+    "sheetCount": "{{count}} pestaña",
+    "sheetCount_other": "{{count}} pestañas",
+    "updated": "Actualizado",
+    "empty": "Todavía no hay modelos financieros cargados para esta operación."
+  },
+  "audit": {
+    "title": "Auditoría de consistencia",
+    "subtitle": "Marca fórmulas rotas, enlaces externos, valores hardcodeados y circularidades — el agente nunca edita el modelo, solo reporta hallazgos.",
+    "run": "Auditar",
+    "rerun": "Volver a auditar",
+    "running": "Auditando la copia de trabajo…",
+    "lastRun": "Última ejecución",
+    "notRunMessage": "Este modelo todavía no se ha auditado.",
+    "notRunHint": "Ejecuta la auditoría para comprobar fórmulas rotas, enlaces externos, valores hardcodeados y circularidades en todas las pestañas.",
+    "summary": "{{count}} hallazgo",
+    "summary_other": "{{count}} hallazgos",
+    "recommendation": "Corrección sugerida",
+    "columns": {
+      "severity": "Severidad",
+      "location": "Ubicación",
+      "type": "Tipo",
+      "finding": "Hallazgo"
+    },
+    "severity": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta",
+      "critical": "Crítica"
+    },
+    "type": {
+      "broken_formula": "Fórmula rota",
+      "external_link": "Enlace externo",
+      "hardcoded_value": "Valor hardcodeado",
+      "circularity": "Circularidad",
+      "cross_tab_inconsistency": "Incoherencia entre pestañas"
+    }
+  },
+  "sensitivities": {
+    "title": "Sensibilidades",
+    "subtitle": "Asunciones y resultados clave por escenario.",
+    "assumptions": "Asunciones",
+    "results": "Resultados",
+    "scenario": {
+      "downside": "Pesimista",
+      "base": "Caso base",
+      "upside": "Optimista"
+    }
+  }
+}

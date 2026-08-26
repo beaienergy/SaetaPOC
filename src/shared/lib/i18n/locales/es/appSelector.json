@@ -1,0 +1,18 @@
+{
+  "label": "Selector de aplicaciones",
+  "greeting": "Bienvenido{{name}}",
+  "subtitle": "Elige la aplicación que quieres abrir.",
+  "apps": {
+    "ma": {
+      "name": "M&A Platform",
+      "description": "Consulta, revisa y haz seguimiento de operaciones de M&A con un agente de IA fundamentado en fuentes.",
+      "status": "Activa",
+      "cta": "Abrir"
+    },
+    "next": {
+      "name": "Next Applications",
+      "description": "El mismo núcleo reutilizable, aplicado al siguiente caso de negocio.",
+      "status": "Próximamente"
+    }
+  }
+}

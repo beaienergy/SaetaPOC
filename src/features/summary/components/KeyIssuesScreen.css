@@ -1,0 +1,9 @@
+.key-issues__risk {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.key-issues__mitigation {
+  color: var(--color-text-soft);
+  max-width: 32ch;
+}

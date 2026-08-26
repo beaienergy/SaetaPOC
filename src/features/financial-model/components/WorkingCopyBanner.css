@@ -1,0 +1,31 @@
+/* Fijo y a la vista (guion §5.4): tono warning, pegado arriba del area de
+   scroll de contenido mientras se navega el resto de la pantalla. Por debajo
+   de --z-header (30) y --z-dropdown (60): no debe tapar el header ni sus
+   desplegables, solo quedarse por encima del resto del contenido de la pagina. */
+.fm-banner {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-warning) 45%, transparent);
+  background: color-mix(in srgb, var(--color-warning) 16%, var(--color-surface));
+  box-shadow: var(--shadow-sm);
+}
+
+.fm-banner__icon {
+  flex: none;
+  color: var(--color-warning);
+}
+
+.fm-banner__text {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+.fm-banner__text strong {
+  font-weight: 700;
+}

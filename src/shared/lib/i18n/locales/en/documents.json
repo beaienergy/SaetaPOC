@@ -1,0 +1,104 @@
+{
+  "title": "Agent Knowledge Ingestion",
+  "upload": {
+    "cta": "+ Upload Documentation",
+    "modalTitle": "Upload documentation",
+    "manual": {
+      "title": "Upload manually",
+      "description": "Select files from your computer.",
+      "action": "Choose files",
+      "working": "Uploading…",
+      "done": "Document added to the dataroom."
+    },
+    "dragDrop": {
+      "title": "Drag files here or click to browse",
+      "hint": "Demo only — no file is actually processed."
+    },
+    "sharepoint": {
+      "title": "Connect to SharePoint",
+      "description": "Sync documents directly from the operation's SharePoint site.",
+      "action": "Connect",
+      "working": "Connecting to SharePoint…",
+      "done": "{{count}} documents synced from SharePoint."
+    }
+  },
+  "table": {
+    "name": "Name",
+    "category": "Category",
+    "uploadedAt": "Uploaded",
+    "status": "Status",
+    "searchPlaceholder": "Search documents by name…",
+    "empty": "No documents match the current filters."
+  },
+  "categories": {
+    "legal": "Legal",
+    "financial": "Financial",
+    "tax": "Tax",
+    "commercial": "Commercial",
+    "technical": "Technical",
+    "esg": "ESG",
+    "hr": "HR"
+  },
+  "status": {
+    "indexed": "Indexed",
+    "pending": "Pending",
+    "error": "Error"
+  },
+  "detail": {
+    "category": "Category",
+    "status": "Status",
+    "version": "Version",
+    "size": "Size",
+    "uploadedAt": "Uploaded",
+    "uploadedBy": "Uploaded by",
+    "preview": "Preview",
+    "versionHistory": "Version history"
+  },
+  "gaps": {
+    "title": "Gaps & contradictions",
+    "subtitle": "Example issues detected across this operation's documentation — missing files, incompatible versions and inconsistencies between reports.",
+    "stats": {
+      "open": "Open",
+      "resolved": "Resolved",
+      "dismissed": "Dismissed"
+    },
+    "filters": {
+      "all": "All",
+      "ariaLabel": "Filter issues by status"
+    },
+    "empty": "No issues match the current filter.",
+    "affectedDocuments": "Affected documents",
+    "detected": "Detected",
+    "notUploaded": "Not uploaded yet",
+    "severity": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "status": {
+      "open": "Open",
+      "resolved": "Resolved",
+      "dismissed": "Dismissed"
+    },
+    "type": {
+      "missing_documentation": "Missing documentation",
+      "incompatible_versions": "Incompatible versions",
+      "inconsistency": "Inconsistency"
+    },
+    "insufficientMessage": "The system doesn't have enough documentation to close this issue on its own.",
+    "insufficientHint": "Ask the deal team to request the missing file, or escalate to a human reviewer.",
+    "requestDocumentation": "Request documentation",
+    "requestHuman": "Request human intervention",
+    "requestSent": "Request sent",
+    "markResolved": "Mark resolved",
+    "dismiss": "Dismiss",
+    "resolvedNote": "Marked resolved on {{date}} (demo action).",
+    "dismissedNote": "Dismissed on {{date}} (demo action)."
+  },
+  "knowledge": {
+    "title": "Knowledge base",
+    "description": "Brings in domain-specific knowledge — procedures seeded ahead of time (e.g. \"how to build a Key Issue List\").",
+    "agentsTitle": "Agent prompts"
+  }
+}

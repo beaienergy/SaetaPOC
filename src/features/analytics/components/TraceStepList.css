@@ -1,0 +1,87 @@
+.trace-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.trace-steps__step {
+  display: flex;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+  position: relative;
+}
+.trace-steps__step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 28px;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-border);
+}
+.trace-steps__marker {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-surface-inset);
+  color: var(--color-text-muted);
+  z-index: 1;
+}
+.trace-steps__step--model .trace-steps__marker {
+  background: var(--color-ai-subtle);
+  color: var(--color-ai);
+}
+.trace-steps__step--tool .trace-steps__marker {
+  background: var(--color-primary-subtle);
+  color: var(--color-primary);
+}
+.trace-steps__step--middleware .trace-steps__marker {
+  background: color-mix(in srgb, var(--color-info) 14%, var(--color-surface));
+  color: var(--color-info);
+}
+.trace-steps__step--final .trace-steps__marker {
+  background: color-mix(in srgb, var(--color-success) 16%, var(--color-surface));
+  color: var(--color-success);
+}
+.trace-steps__body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 3px;
+}
+.trace-steps__head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.trace-steps__label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
+.trace-steps__tokens {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-ai);
+  background: var(--color-ai-subtle);
+  padding: 1px 7px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+.trace-steps__model {
+  display: inline-block;
+  margin-top: 3px;
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+}
+.trace-steps__detail {
+  margin: 3px 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+}

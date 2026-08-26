@@ -1,0 +1,103 @@
+{
+  "citation": {
+    "label": "Cita {{index}}: {{document}}"
+  },
+  "filters": {
+    "operation": "Operación",
+    "agent": "Agente",
+    "status": "Estado",
+    "dateRange": "Rango de fechas",
+    "last7": "Últimos 7 días",
+    "last30": "Últimos 30 días",
+    "last90": "Últimos 90 días",
+    "allAgents": "Todos los agentes",
+    "allStatuses": "Todos los estados",
+    "unitNote": "Las cifras de coste usan una unidad de coste interna arbitraria, no una moneda real."
+  },
+  "useCase": {
+    "chat": "Consulta",
+    "summary-overview": "Resumen",
+    "key-issues": "Key Issue List",
+    "financial-audit": "Modelo financiero",
+    "reports": "Informes"
+  },
+  "cost": {
+    "unit": "unidades de coste",
+    "unitFootnote": "El coste se expresa en una unidad de coste interna arbitraria para esta demo, no en una moneda real.",
+    "stats": {
+      "totalCost": "Coste total",
+      "totalCalls": "Llamadas totales",
+      "topUseCase": "Caso de uso principal",
+      "errorRate": "Tasa de error"
+    },
+    "overTime": {
+      "title": "Coste en el tiempo",
+      "hint": "Coste diario de todos los agentes para la operación y el rango seleccionados.",
+      "series": "Coste",
+      "total": "Total: {{value}}"
+    },
+    "byUseCase": {
+      "title": "Coste por caso de uso",
+      "hint": "Coste desglosado por agente/caso de uso — Consulta, Resumen, Key Issue List, Modelo financiero, Informes.",
+      "series": "Coste"
+    },
+    "usage": {
+      "title": "Consumo por agente / modelo",
+      "hint": "Llamadas y volumen de tokens por agente y el modelo al que se enruta.",
+      "calls": "Llamadas",
+      "tokensIn": "Tokens de entrada",
+      "tokensOut": "Tokens de salida"
+    },
+    "successRate": {
+      "title": "Tasa de éxito / error",
+      "hint": "Proporción de ejecuciones correctas frente a fallidas por agente.",
+      "success": "Éxito",
+      "error": "Error",
+      "errorRateLabel": "Tasa de error"
+    }
+  },
+  "traces": {
+    "empty": "Ninguna ejecución coincide con estos filtros.",
+    "secondsShort": "s",
+    "tokensShort": "tk",
+    "totalReasoning": "razonamiento total",
+    "status": {
+      "success": "Éxito",
+      "partial": "Parcial",
+      "error": "Error"
+    },
+    "step": {
+      "flow": "Flow",
+      "model": "Modelo",
+      "tool": "Tool",
+      "middleware": "Middleware",
+      "final": "Resultado"
+    }
+  },
+  "memory": {
+    "empty": "Todavía no hay propuestas de memoria para esta operación.",
+    "before": "Antes",
+    "after": "Después",
+    "noPriorEntry": "Sin entrada previa — este es un elemento de memoria nuevo.",
+    "evidence": "Evidencia",
+    "auditTrail": "Trazo de auditoría",
+    "originatedBy": "Propuesto por {{agent}}, desde la conversación {{conversation}}",
+    "status": {
+      "pending": "Pendiente",
+      "approved": "Aprobada",
+      "rejected": "Rechazada",
+      "reverted": "Revertida"
+    },
+    "auditAction": {
+      "proposed": "Propuesta",
+      "approved": "Aprobada por",
+      "rejected": "Rechazada por",
+      "reverted": "Revertida por"
+    },
+    "actions": {
+      "approve": "Aprobar",
+      "reject": "Rechazar",
+      "revert": "Revertir"
+    }
+  }
+}

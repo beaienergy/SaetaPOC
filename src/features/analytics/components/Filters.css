@@ -1,0 +1,25 @@
+/* Fila de filtros compartida por Coste (§5.6.1) y Trazas (§5.6.2) — compone
+   `.card` en vez de repetir su receta, igual que `FilterBar` de shared/ui. */
+.analytics-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: flex-end;
+}
+.analytics-filters__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 180px;
+  flex: 1 1 180px;
+}
+.analytics-filters__label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-soft);
+}
+.analytics-filters__note {
+  flex-basis: 100%;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,32 @@
+.fm-finding__location {
+  font-size: var(--text-xs);
+  color: var(--color-text);
+  background: var(--color-surface-inset);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.fm-finding {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-1) 0;
+  max-width: 52ch;
+}
+
+.fm-finding__description {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.fm-finding__recommendation {
+  font-size: var(--text-xs);
+  color: var(--color-text-soft);
+  line-height: 1.5;
+}
+
+.fm-finding__recommendation-label {
+  font-weight: 600;
+  color: var(--color-text-muted);
+}

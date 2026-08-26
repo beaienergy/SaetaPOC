@@ -1,0 +1,20 @@
+{
+  "title": "Operations",
+  "subtitle": "Choose the operation you want to work on. Each operation is fully segregated — nothing from one is visible from another.",
+  "status": {
+    "active": "In progress",
+    "closed": "Closed"
+  },
+  "card": {
+    "target": "Target",
+    "lastActivity": "Last activity",
+    "documents": "{{count}} document",
+    "documents_other": "{{count}} documents",
+    "openIssues": "{{count}} open issue",
+    "openIssues_other": "{{count}} open issues"
+  },
+  "newOperation": {
+    "cta": "+ Create Project",
+    "hint": "Not wired up in this demo"
+  }
+}

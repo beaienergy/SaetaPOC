@@ -1,0 +1,108 @@
+{
+  "citation": {
+    "trigger": "Source: {{document}}",
+    "viewSource": "View source"
+  },
+  "generated": {
+    "label": "Auto-generated",
+    "at": "Last analysis: {{date}}",
+    "regenerate": "Regenerate"
+  },
+  "insufficient": {
+    "requestHuman": "Request human input",
+    "requestDocuments": "Request documentation",
+    "humanRequested": "Human input requested",
+    "documentsRequested": "Documentation requested"
+  },
+  "overview": {
+    "title": "Overview",
+    "subtitle": "System-generated snapshot of the operation — every field cites its source, or says why it can't yet.",
+    "snapshotTitle": "Operation snapshot",
+    "fields": {
+      "perimeter": "Perimeter",
+      "parties": "Parties",
+      "milestones": "Milestones",
+      "status": "Status",
+      "keyIssues": "Key issues"
+    },
+    "viewKeyIssues": "View full Key Issue List →"
+  },
+  "keyIssues": {
+    "title": "Key Issue List",
+    "subtitle": "Risk, evidence, impact, owner, mitigation and status — draftable, editable, exportable.",
+    "empty": "No key issues yet — generate a draft to get started.",
+    "actions": {
+      "generate": "Generate draft",
+      "export": "Export"
+    },
+    "columns": {
+      "risk": "Risk",
+      "evidence": "Evidence",
+      "impact": "Impact",
+      "owner": "Owner",
+      "mitigation": "Mitigation",
+      "status": "Status"
+    },
+    "status": {
+      "open": "Open",
+      "mitigated": "Mitigated",
+      "escalated": "Escalated"
+    },
+    "impact": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    }
+  },
+  "facts": {
+    "title": "Facts vs conclusions",
+    "subtitle": "What the documents say, what the agent infers, and what's still unconfirmed — kept visibly separate.",
+    "columns": {
+      "fact": "Facts",
+      "inference": "Inferences",
+      "hypothesis": "Hypotheses"
+    },
+    "hints": {
+      "fact": "Documented and cited — not the agent's opinion.",
+      "inference": "The agent's own reasoning over documented facts, clearly marked as such.",
+      "hypothesis": "Unconfirmed ideas, with a note on what would confirm them."
+    },
+    "convertToIssue": "Convert to Key Issue",
+    "converted": "Added to Key Issue List"
+  },
+  "tracking": {
+    "title": "Tracking",
+    "subtitle": "Pending actions and the question bank for seller/advisors.",
+    "actionsEmpty": "No tracked actions yet.",
+    "questionsEmpty": "No questions yet.",
+    "toggleStatus": "Toggle answered status",
+    "draftAnswer": "Agent draft answer",
+    "columns": {
+      "action": "Action",
+      "owner": "Owner",
+      "dueDate": "Due date",
+      "status": "Status"
+    },
+    "status": {
+      "pending": "Pending",
+      "in-progress": "In progress",
+      "done": "Done"
+    },
+    "questionStatus": {
+      "pending": "Pending",
+      "answered": "Answered"
+    },
+    "tabs": {
+      "ariaLabel": "Tracking view",
+      "actions": "Actions",
+      "questions": "Questions for seller/advisors"
+    },
+    "phases": {
+      "screening": "Screening",
+      "due-diligence": "Due diligence",
+      "negotiation": "Negotiation",
+      "closed": "Closed"
+    }
+  }
+}

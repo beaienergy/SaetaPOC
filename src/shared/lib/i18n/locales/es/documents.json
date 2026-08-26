@@ -1,0 +1,104 @@
+{
+  "title": "Ingesta conocimiento Agente",
+  "upload": {
+    "cta": "+ Subir Documentación",
+    "modalTitle": "Subir documentación",
+    "manual": {
+      "title": "Subir manualmente",
+      "description": "Selecciona archivos desde tu ordenador.",
+      "action": "Elegir archivos",
+      "working": "Subiendo…",
+      "done": "Documento añadido al dataroom."
+    },
+    "dragDrop": {
+      "title": "Arrastra archivos aquí o haz clic para explorar",
+      "hint": "Solo demo — no se procesa ningún archivo real."
+    },
+    "sharepoint": {
+      "title": "Conectar con SharePoint",
+      "description": "Sincroniza documentos directamente desde el sitio de SharePoint de la operación.",
+      "action": "Conectar",
+      "working": "Conectando con SharePoint…",
+      "done": "{{count}} documentos sincronizados desde SharePoint."
+    }
+  },
+  "table": {
+    "name": "Nombre",
+    "category": "Categoría",
+    "uploadedAt": "Subido",
+    "status": "Estado",
+    "searchPlaceholder": "Buscar documentos por nombre…",
+    "empty": "Ningún documento coincide con los filtros actuales."
+  },
+  "categories": {
+    "legal": "Legal",
+    "financial": "Financiera",
+    "tax": "Fiscal",
+    "commercial": "Comercial",
+    "technical": "Técnica",
+    "esg": "ESG",
+    "hr": "RRHH"
+  },
+  "status": {
+    "indexed": "Indexado",
+    "pending": "Pendiente",
+    "error": "Error"
+  },
+  "detail": {
+    "category": "Categoría",
+    "status": "Estado",
+    "version": "Versión",
+    "size": "Tamaño",
+    "uploadedAt": "Subido",
+    "uploadedBy": "Subido por",
+    "preview": "Previsualización",
+    "versionHistory": "Historial de versiones"
+  },
+  "gaps": {
+    "title": "Gaps y contradicciones",
+    "subtitle": "Incidencias de ejemplo detectadas en la documentación de esta operación — documentación pendiente, versiones incompatibles e incoherencias entre informes.",
+    "stats": {
+      "open": "Abiertas",
+      "resolved": "Resueltas",
+      "dismissed": "Descartadas"
+    },
+    "filters": {
+      "all": "Todas",
+      "ariaLabel": "Filtrar incidencias por estado"
+    },
+    "empty": "Ninguna incidencia coincide con el filtro actual.",
+    "affectedDocuments": "Documentos afectados",
+    "detected": "Detectada",
+    "notUploaded": "Todavía no subido",
+    "severity": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta",
+      "critical": "Crítica"
+    },
+    "status": {
+      "open": "Abierta",
+      "resolved": "Resuelta",
+      "dismissed": "Descartada"
+    },
+    "type": {
+      "missing_documentation": "Documentación pendiente",
+      "incompatible_versions": "Versiones incompatibles",
+      "inconsistency": "Incoherencia"
+    },
+    "insufficientMessage": "El sistema no tiene documentación suficiente para cerrar esta incidencia por sí solo.",
+    "insufficientHint": "Pide al equipo del deal que solicite el archivo que falta, o escala a un revisor humano.",
+    "requestDocumentation": "Solicitar documentación",
+    "requestHuman": "Pedir intervención humana",
+    "requestSent": "Solicitud enviada",
+    "markResolved": "Marcar como resuelta",
+    "dismiss": "Descartar",
+    "resolvedNote": "Marcada como resuelta el {{date}} (acción de demo).",
+    "dismissedNote": "Descartada el {{date}} (acción de demo)."
+  },
+  "knowledge": {
+    "title": "Base de conocimiento",
+    "description": "Incorpora conocimiento específico sobre procedimientos de dominio sembrados de antemano (ej. \"cómo se construye una Key Issue List\").",
+    "agentsTitle": "Prompts de agentes"
+  }
+}

@@ -1,0 +1,29 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.login-form__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.login-form__field-icon {
+  position: absolute;
+  left: var(--space-3);
+  display: inline-flex;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+.login-form__field-input {
+  padding-left: 38px;
+}
+.login-form__error {
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+}
+.login-form__hint {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}

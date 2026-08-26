@@ -1,0 +1,50 @@
+{
+  "title": "Informes",
+  "subtitle": "Redacta materiales ejecutivos a partir de una plantilla, las secciones que elijas y fuentes citadas.",
+  "draftSectionTitle": "Redactar un nuevo informe",
+  "status": {
+    "draft": "Borrador",
+    "final": "Final"
+  },
+  "templates": {
+    "sectionsCount": "{{count}} sección",
+    "sectionsCount_other": "{{count}} secciones"
+  },
+  "selection": {
+    "sectionsTitle": "Secciones",
+    "sourcesTitle": "Fuentes",
+    "noSectionsHint": "Selecciona al menos una sección para generar un borrador.",
+    "changeTemplate": "Cambiar plantilla",
+    "generate": "Generar borrador",
+    "generating": "Generando…"
+  },
+  "preview": {
+    "meta": "Versión {{version}} · {{date}} · {{author}}"
+  },
+  "citations": {
+    "title": "Citas",
+    "empty": "Todavía no hay citas — genera un borrador para ver aquí las fuentes que lo respaldan.",
+    "open": "Fuente: {{document}}"
+  },
+  "history": {
+    "title": "Historial de versiones",
+    "empty": "Todavía no se ha generado ningún informe.",
+    "viewing": "Viendo",
+    "columns": {
+      "report": "Informe",
+      "version": "Versión",
+      "status": "Estado",
+      "generated": "Generado",
+      "author": "Autor"
+    }
+  },
+  "export": {
+    "title": "Exportar",
+    "confirmation": "{{title}} exportado como {{format}} (demo — no se ha generado ningún archivo real).",
+    "formats": {
+      "pdf": "PDF",
+      "word": "Word",
+      "ppt": "PowerPoint"
+    }
+  }
+}

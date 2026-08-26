@@ -1,0 +1,50 @@
+{
+  "title": "Reports",
+  "subtitle": "Draft executive materials from a template, the sections you choose, and cited sources.",
+  "draftSectionTitle": "Draft a new report",
+  "status": {
+    "draft": "Draft",
+    "final": "Final"
+  },
+  "templates": {
+    "sectionsCount": "{{count}} section",
+    "sectionsCount_other": "{{count}} sections"
+  },
+  "selection": {
+    "sectionsTitle": "Sections",
+    "sourcesTitle": "Sources",
+    "noSectionsHint": "Select at least one section to generate a draft.",
+    "changeTemplate": "Change template",
+    "generate": "Generate draft",
+    "generating": "Generating…"
+  },
+  "preview": {
+    "meta": "Version {{version}} · {{date}} · {{author}}"
+  },
+  "citations": {
+    "title": "Citations",
+    "empty": "No citations yet — generate a draft to see supporting sources here.",
+    "open": "Source: {{document}}"
+  },
+  "history": {
+    "title": "Version history",
+    "empty": "No reports generated yet.",
+    "viewing": "Viewing",
+    "columns": {
+      "report": "Report",
+      "version": "Version",
+      "status": "Status",
+      "generated": "Generated",
+      "author": "Author"
+    }
+  },
+  "export": {
+    "title": "Export",
+    "confirmation": "{{title}} exported as {{format}} (demo — no file was actually produced).",
+    "formats": {
+      "pdf": "PDF",
+      "word": "Word",
+      "ppt": "PowerPoint"
+    }
+  }
+}

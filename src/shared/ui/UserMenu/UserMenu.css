@@ -1,0 +1,88 @@
+/* Menu de usuario compartido: header del N1, portal y Asistente KPI.
+   El popover es identico en los tres; lo unico que cambia con el tono es el
+   disparador, porque el portal lo pinta sobre chrome navy fijo. */
+
+.user-menu {
+  position: relative;
+}
+
+.user-menu__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  color: var(--color-text-soft);
+  padding: 3px 8px 3px 3px;
+  cursor: pointer;
+  transition: background var(--dur-fast) ease;
+}
+.user-menu__btn--on-dark {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.85);
+}
+.user-menu__btn--on-dark:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.user-menu__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+.user-menu__avatar--on-dark {
+  background: #fff;
+  color: var(--saeta-navy);
+}
+
+.user-menu__pop {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-dropdown);
+  animation: slideDown var(--dur-fast) ease;
+  overflow: hidden;
+}
+.user-menu__info {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+.user-menu__info strong {
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+.user-menu__info span {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+.user-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--color-danger);
+  font-size: var(--text-md);
+  padding: var(--space-3);
+  cursor: pointer;
+}
+.user-menu__item:hover {
+  background: var(--color-surface-inset);
+}

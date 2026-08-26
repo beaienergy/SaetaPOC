@@ -1,0 +1,108 @@
+{
+  "citation": {
+    "trigger": "Fuente: {{document}}",
+    "viewSource": "Ver fuente"
+  },
+  "generated": {
+    "label": "Generado automáticamente",
+    "at": "Último análisis: {{date}}",
+    "regenerate": "Regenerar"
+  },
+  "insufficient": {
+    "requestHuman": "Pedir intervención humana",
+    "requestDocuments": "Solicitar documentación",
+    "humanRequested": "Intervención humana solicitada",
+    "documentsRequested": "Documentación solicitada"
+  },
+  "overview": {
+    "title": "Resumen",
+    "subtitle": "Ficha de operación generada por el sistema — cada campo cita su fuente, o explica por qué todavía no puede.",
+    "snapshotTitle": "Ficha de la operación",
+    "fields": {
+      "perimeter": "Perímetro",
+      "parties": "Partes",
+      "milestones": "Hitos",
+      "status": "Estado",
+      "keyIssues": "Asuntos clave"
+    },
+    "viewKeyIssues": "Ver Key Issue List completa →"
+  },
+  "keyIssues": {
+    "title": "Key Issue List",
+    "subtitle": "Riesgo, evidencia, impacto, responsable, mitigación y estado — generable, editable, exportable.",
+    "empty": "Todavía no hay asuntos — genera un borrador para empezar.",
+    "actions": {
+      "generate": "Generar borrador",
+      "export": "Exportar"
+    },
+    "columns": {
+      "risk": "Riesgo",
+      "evidence": "Evidencia",
+      "impact": "Impacto",
+      "owner": "Responsable",
+      "mitigation": "Mitigación",
+      "status": "Estado"
+    },
+    "status": {
+      "open": "Abierto",
+      "mitigated": "Mitigado",
+      "escalated": "Escalado"
+    },
+    "impact": {
+      "low": "Bajo",
+      "medium": "Medio",
+      "high": "Alto",
+      "critical": "Crítico"
+    }
+  },
+  "facts": {
+    "title": "Hechos vs conclusiones",
+    "subtitle": "Lo que dicen los documentos, lo que infiere el agente y lo que sigue sin confirmar — separado visiblemente.",
+    "columns": {
+      "fact": "Hechos",
+      "inference": "Inferencias",
+      "hypothesis": "Hipótesis"
+    },
+    "hints": {
+      "fact": "Documentado y citado — no es la opinión del agente.",
+      "inference": "Razonamiento propio del agente sobre hechos documentados, marcado como tal.",
+      "hypothesis": "Ideas sin confirmar, con una nota de qué las confirmaría."
+    },
+    "convertToIssue": "Convertir en Key Issue",
+    "converted": "Añadido a la Key Issue List"
+  },
+  "tracking": {
+    "title": "Seguimiento",
+    "subtitle": "Acciones pendientes y banco de preguntas para vendedor/asesores.",
+    "actionsEmpty": "Todavía no hay acciones de seguimiento.",
+    "questionsEmpty": "Todavía no hay preguntas.",
+    "toggleStatus": "Cambiar estado de respondida",
+    "draftAnswer": "Borrador de respuesta del agente",
+    "columns": {
+      "action": "Acción",
+      "owner": "Responsable",
+      "dueDate": "Fecha límite",
+      "status": "Estado"
+    },
+    "status": {
+      "pending": "Pendiente",
+      "in-progress": "En curso",
+      "done": "Hecho"
+    },
+    "questionStatus": {
+      "pending": "Pendiente",
+      "answered": "Respondida"
+    },
+    "tabs": {
+      "ariaLabel": "Vista de seguimiento",
+      "actions": "Acciones",
+      "questions": "Preguntas para vendedor/asesores"
+    },
+    "phases": {
+      "screening": "Cribado",
+      "due-diligence": "Due diligence",
+      "negotiation": "Negociación",
+      "closed": "Cerrada"
+    }
+  }
+}

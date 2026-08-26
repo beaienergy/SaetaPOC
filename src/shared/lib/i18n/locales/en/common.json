@@ -1,0 +1,56 @@
+{
+  "appName": "Saeta 2nd Brain",
+  "appOwner": "M&A Platform",
+  "platformName": "Saeta AI Platform",
+  "actions": {
+    "menu": "Menu",
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "generate": "Generate",
+    "regenerate": "Regenerate",
+    "export": "Export",
+    "back": "Back",
+    "viewSource": "View source",
+    "loadMore": "Load more",
+    "whatIsThis": "What is this?",
+    "collapse": "Collapse",
+    "expand": "Expand"
+  },
+  "role": {
+    "label": "Viewing as",
+    "admin": "Admin",
+    "user": "User"
+  },
+  "theme": {
+    "light": "Light theme",
+    "dark": "Dark theme",
+    "system": "System theme"
+  },
+  "lang": {
+    "label": "Language",
+    "en": "EN",
+    "es": "ES"
+  },
+  "user": {
+    "logout": "Log out"
+  },
+  "states": {
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "errorHint": "Try again in a moment.",
+    "empty": "Nothing here yet"
+  },
+  "errorBoundary": {
+    "title": "Something broke",
+    "hint": "Reload the page to keep working — this is a demo environment.",
+    "reload": "Reload"
+  },
+  "demo": {
+    "badge": "Demo data",
+    "hint": "All content on this screen is simulated for the demo — no document was really processed."
+  }
+}

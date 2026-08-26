@@ -1,0 +1,21 @@
+.key-issue-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.key-issue-drawer__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.key-issue-drawer__row .u-eyebrow {
+  min-width: 90px;
+}
+
+.key-issue-drawer__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}

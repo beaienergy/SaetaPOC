@@ -1,0 +1,38 @@
+/* La superficie la pone `.card`, que se aplica junto a esta clase. */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+}
+.filter-bar__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 220px;
+  color: var(--color-text-muted);
+}
+.filter-bar__search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--text-md);
+  color: var(--color-text);
+}
+.filter-bar__search input:focus {
+  outline: none;
+}
+.filter-bar__filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+/* Un campo (Input/Select) suelto en el slot de filtros se ajusta al contenido:
+   el 100 % que trae `.field` por defecto solo tiene sentido en un formulario. */
+.filter-bar__filters .field {
+  width: auto;
+  min-width: 150px;
+}

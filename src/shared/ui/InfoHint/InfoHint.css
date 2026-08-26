@@ -1,0 +1,55 @@
+.info-hint {
+  position: relative;
+  display: inline-flex;
+  line-height: 0;
+}
+
+.info-hint__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: help;
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  transition: color var(--dur-fast) ease;
+}
+.info-hint__trigger:hover,
+.info-hint__trigger[aria-expanded='true'] {
+  color: var(--color-primary);
+}
+.info-hint__trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.info-hint__pop {
+  position: absolute;
+  right: 0;
+  z-index: var(--z-dropdown);
+  width: max-content;
+  /* En un móvil estrecho, 240px fijos no dejan margen ni con desplazamiento:
+     el globo nunca puede ser más ancho que la pantalla menos sus bordes. */
+  max-width: min(240px, calc(100vw - 32px));
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--color-text-soft);
+  white-space: normal;
+  animation: fadeIn var(--dur-fast) ease;
+}
+.info-hint--bottom .info-hint__pop {
+  top: calc(100% + 6px);
+}
+.info-hint--top .info-hint__pop {
+  bottom: calc(100% + 6px);
+}

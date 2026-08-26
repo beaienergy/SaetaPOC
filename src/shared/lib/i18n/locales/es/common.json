@@ -1,0 +1,56 @@
+{
+  "appName": "Saeta 2nd Brain",
+  "appOwner": "Plataforma M&A",
+  "platformName": "Saeta AI Platform",
+  "actions": {
+    "menu": "Menú",
+    "close": "Cerrar",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "add": "Añadir",
+    "generate": "Generar",
+    "regenerate": "Regenerar",
+    "export": "Exportar",
+    "back": "Volver",
+    "viewSource": "Ver fuente",
+    "loadMore": "Cargar más",
+    "whatIsThis": "¿Qué es esto?",
+    "collapse": "Colapsar",
+    "expand": "Expandir"
+  },
+  "role": {
+    "label": "Viendo como",
+    "admin": "Admin",
+    "user": "Usuario"
+  },
+  "theme": {
+    "light": "Tema claro",
+    "dark": "Tema oscuro",
+    "system": "Tema del sistema"
+  },
+  "lang": {
+    "label": "Idioma",
+    "en": "EN",
+    "es": "ES"
+  },
+  "user": {
+    "logout": "Cerrar sesión"
+  },
+  "states": {
+    "loading": "Cargando…",
+    "error": "Algo ha ido mal",
+    "errorHint": "Inténtalo de nuevo en un momento.",
+    "empty": "Todavía no hay nada aquí"
+  },
+  "errorBoundary": {
+    "title": "Algo se ha roto",
+    "hint": "Recarga la página para seguir trabajando — esto es un entorno de demo.",
+    "reload": "Recargar"
+  },
+  "demo": {
+    "badge": "Datos de demo",
+    "hint": "Todo el contenido de esta pantalla está simulado para la demo — ningún documento se ha procesado realmente."
+  }
+}

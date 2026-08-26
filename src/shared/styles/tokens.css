@@ -1,0 +1,271 @@
+/*
+ * Sistema de diseno Saeta en 3 niveles (mismo patron que el proyecto de
+ * referencia TMEIC-Ports-Frontend, solo cambian los valores):
+ *   1) primitivas  -> valores crudos de marca (NO usar en componentes)
+ *   2) semanticos  -> lo unico que consumen los componentes
+ *   3) escalas     -> espaciado, radios, tipografia, sombras, z-index
+ * El modo oscuro re-apunta solo los semanticos: los componentes no cambian.
+ *
+ * Paleta PROVISIONAL: derivada del logo de Saeta (navy del wordmark "saetayield"
+ * + los cuatro colores del icono — naranja, rojo, verde-lima, turquesa). No son
+ * hex oficiales de marca confirmados por el cliente; centralizados aqui a
+ * proposito para que cambiarlos, si Saeta da una guia de marca distinta, sea
+ * editar un solo fichero.
+ */
+
+:root {
+  /* 1) Primitivas de marca Saeta */
+  --saeta-navy: #1c2148;
+  --saeta-navy-dark: #12152f;
+  --saeta-navy-light: #e9eaf4;
+  --saeta-orange: #f0871f;
+  --saeta-red: #e6432e;
+  --saeta-lime: #a9c93a;
+  --saeta-teal: #2fa6a0;
+
+  /* Primitivas neutras: solo los pasos que consume algun semantico */
+  --gray-50: #f7f8fa;
+  --gray-100: #eef0f4;
+  --gray-200: #e2e5ec;
+  --gray-300: #ccd1dc;
+  --gray-400: #99a1b3;
+  --gray-500: #6a7288;
+  --gray-600: #495166;
+  --gray-900: #10121e;
+
+  /* Primitivas de estado (genericas, no de marca: el error no puede compartir
+     tinta con el rojo del icono o "peligro" se leeria como "esto es Saeta"). */
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+  --amber-500: #f59e0b;
+  --amber-600: #b7791f;
+  --danger-500: #ef4444;
+  --danger-600: #d92d20;
+  --sky-500: #2f8fd0;
+  --sky-400: #56a8e0;
+
+  /* Primitivas categoricas: los 4 colores del icono + dos neutros de apoyo.
+     Sufijo -700 = modo claro, -300 = modo oscuro; cada par calibrado para
+     >=4.5:1 sobre su propio fondo de badge (tinte al 14% sobre la superficie). */
+  --cat-navy-700: var(--saeta-navy);
+  --cat-navy-300: #7c84d1;
+  --cat-orange-700: #b8630f;
+  --cat-orange-300: #ffb066;
+  --cat-red-700: var(--saeta-red);
+  --cat-red-300: #ff8a78;
+  --cat-lime-700: #6d8a1a;
+  --cat-lime-300: #cbe378;
+  --cat-teal-700: var(--saeta-teal);
+  --cat-teal-300: #7ed9d2;
+  --cat-steel-700: #53616f;
+  --cat-steel-300: #9fb3c9;
+
+  /* 2) Semanticos (modo claro) */
+  --color-bg: var(--gray-50);
+  --color-surface: #ffffff;
+  --color-surface-2: var(--gray-50);
+  --color-surface-inset: var(--gray-100);
+  --color-border: var(--gray-200);
+  --color-border-strong: var(--gray-300);
+  --color-text: var(--gray-900);
+  --color-text-soft: var(--gray-600);
+  --color-text-muted: var(--gray-500);
+  --color-text-on-primary: #ffffff;
+
+  --color-primary: var(--saeta-navy);
+  --color-primary-hover: var(--saeta-navy-dark);
+  --color-primary-subtle: var(--saeta-navy-light);
+  /* Firma de marca: el naranja del icono, solo para chrome (link activo del
+     sidebar, hairline del panel de login) — nunca para texto ni datos. */
+  --color-brand-chrome: var(--saeta-orange);
+
+  --color-success: var(--emerald-600);
+  --color-warning: var(--amber-600);
+  --color-danger: var(--danger-600);
+  --color-info: var(--saeta-navy);
+
+  /* Paleta categorica de los badges (Badge.tsx, tonos blue/sky/... se
+     reetiquetan a los del icono al construir los componentes de dominio). */
+  --color-tone-blue: var(--cat-navy-700);
+  --color-tone-sky: var(--cat-teal-700);
+  --color-tone-cyan: var(--cat-teal-700);
+  --color-tone-indigo: var(--cat-navy-700);
+  --color-tone-violet: var(--cat-navy-700);
+  --color-tone-steel: var(--cat-steel-700);
+  --color-tone-orange: var(--cat-orange-700);
+  --color-tone-red: var(--cat-red-700);
+  --color-tone-lime: var(--cat-lime-700);
+
+  /* El sidebar tiene paleta propia: navy fijo, no reactivo a --color-surface. */
+  --color-sidebar: var(--saeta-navy);
+  --color-sidebar-2: #14173a;
+  --color-sidebar-text: #c7cbe6;
+  --color-sidebar-text-muted: #8388ab;
+  --color-sidebar-raised: rgba(255, 255, 255, 0.06);
+  --color-sidebar-border: rgba(255, 255, 255, 0.08);
+
+  --color-focus-ring: rgba(28, 33, 72, 0.35);
+  --color-overlay: rgba(16, 18, 30, 0.45);
+
+  --color-scrollbar: rgba(16, 18, 30, 0.14);
+  --color-scrollbar-hover: rgba(16, 18, 30, 0.32);
+
+  /* Panel de marca a pantalla completa (login, selector de apps): mismo navy
+     que el sidebar. Los "glow" son decorativos, apuntan a primitivas fijas. */
+  --color-brand-panel-from: var(--color-sidebar);
+  --color-brand-panel-via: var(--color-sidebar-2);
+  --color-brand-panel-to: var(--saeta-navy-dark);
+  --color-brand-glow-1: var(--saeta-teal);
+  --color-brand-glow-2: var(--saeta-orange);
+
+  /* Tarjetas del selector de apps: oscuras y fijas, no reactivas al tema —
+     el selector es una pantalla oscura de principio a fin. */
+  --color-tile-surface: rgba(18, 21, 47, 0.72);
+  --color-tile-border: rgba(125, 178, 227, 0.22);
+  --color-tile-border-hover: rgba(240, 135, 31, 0.5);
+  --color-tile-text: #eef0fb;
+  --color-tile-text-soft: rgba(238, 240, 251, 0.72);
+  --color-tile-pill-bg: rgba(255, 255, 255, 0.1);
+  --color-tile-pill-fg: #eef0fb;
+  --color-tile-accent-bg: rgba(240, 135, 31, 0.18);
+  --color-tile-accent-fg: #ffb066;
+
+  /* Acento de "generado por el agente": marca el MARCO de lo que produce el
+     agente (bordes, chips de cita, badges de procedencia, boton de enviar),
+     NUNCA la tinta del dato. Datos medidos siguen en tinta de texto/marca. */
+  --color-ai: var(--cat-teal-700);
+  --color-ai-2: var(--saeta-orange);
+  --color-ai-subtle: color-mix(in srgb, var(--color-ai) 8%, transparent);
+  --color-ai-border: color-mix(in srgb, var(--color-ai) 28%, transparent);
+  --color-ai-ring: color-mix(in srgb, var(--color-ai) 22%, transparent);
+  --gradient-ai: linear-gradient(120deg, var(--color-primary), var(--color-ai) 55%, var(--color-ai-2));
+
+  /* Series de graficas (dashboard de coste, §5.6.1): datos medidos, salen de
+     las primitivas categoricas y no del acento del agente. */
+  --color-series-1: var(--cat-navy-700);
+  --color-series-2: var(--cat-teal-700);
+  --color-series-3: var(--cat-orange-700);
+  --color-series-4: var(--cat-red-700);
+  --color-series-5: var(--cat-steel-700);
+
+  /* 3) Escalas (genericas, sin carga de marca) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+  --text-2xl: 26px;
+  --text-3xl: 30px;
+
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-lg: 0 10px 25px rgba(16, 24, 40, 0.12);
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.05), 0 2px 8px rgba(16, 24, 40, 0.05);
+  --shadow-card-hover: 0 2px 4px rgba(16, 24, 40, 0.06), 0 8px 20px rgba(16, 24, 40, 0.08);
+
+  --z-sidebar: 40;
+  --z-header: 30;
+  --z-assistant: 50;
+  --z-dropdown: 60;
+  --z-modal: 1000;
+
+  --dur-fast: 0.15s;
+  --dur-normal: 0.25s;
+  --dur-slow: 0.35s;
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --sidebar-width: 240px;
+  /* Sidebar secundario contextual (guion §1.3): Documentacion, Resumen y
+     Analitica IA lo muestran cuando tienen subpantallas. */
+  --sidebar-secondary-width: 200px;
+  --header-height: 64px;
+
+  --lightningcss-light: initial;
+  --lightningcss-dark: ;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  /* Solo se re-apuntan los semanticos */
+  --color-bg: #0c0e1a;
+  --color-surface: #14172a;
+  --color-surface-2: #10121f;
+  --color-surface-inset: #1a1e34;
+  --color-border: #262b47;
+  --color-border-strong: #333a5c;
+  --color-text: #e8e9f5;
+  --color-text-soft: #aab0c9;
+  --color-text-muted: #7c82a0;
+  --color-text-on-primary: #ffffff;
+
+  --color-primary: #6b74c9;
+  --color-primary-hover: #8891db;
+  --color-primary-subtle: rgba(107, 116, 201, 0.16);
+
+  --color-success: var(--emerald-500);
+  --color-warning: var(--amber-500);
+  --color-danger: var(--danger-500);
+  --color-info: #6b74c9;
+
+  --color-tone-blue: var(--cat-navy-300);
+  --color-tone-sky: var(--cat-teal-300);
+  --color-tone-cyan: var(--cat-teal-300);
+  --color-tone-indigo: var(--cat-navy-300);
+  --color-tone-violet: var(--cat-navy-300);
+  --color-tone-steel: var(--cat-steel-300);
+  --color-tone-orange: var(--cat-orange-300);
+  --color-tone-red: var(--cat-red-300);
+  --color-tone-lime: var(--cat-lime-300);
+
+  --color-sidebar: #0e1024;
+  --color-sidebar-2: #090a1a;
+  --color-sidebar-text: #c7cbe6;
+  --color-sidebar-text-muted: #6e739a;
+  --color-sidebar-raised: rgba(255, 255, 255, 0.05);
+  --color-sidebar-border: rgba(255, 255, 255, 0.07);
+
+  --color-focus-ring: rgba(107, 116, 201, 0.4);
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-scrollbar: rgba(255, 255, 255, 0.14);
+  --color-scrollbar-hover: rgba(255, 255, 255, 0.32);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.4);
+
+  --color-series-1: var(--cat-navy-300);
+  --color-series-2: var(--cat-teal-300);
+  --color-series-3: var(--cat-orange-300);
+  --color-series-4: var(--cat-red-300);
+  --color-series-5: var(--cat-steel-300);
+
+  --color-ai: var(--cat-teal-300);
+  --color-ai-2: var(--cat-orange-300);
+  --color-ai-subtle: color-mix(in srgb, var(--color-ai) 14%, transparent);
+  --color-ai-border: color-mix(in srgb, var(--color-ai) 38%, transparent);
+  --color-ai-ring: color-mix(in srgb, var(--color-ai) 30%, transparent);
+
+  --lightningcss-light: ;
+  --lightningcss-dark: initial;
+  color-scheme: dark;
+}

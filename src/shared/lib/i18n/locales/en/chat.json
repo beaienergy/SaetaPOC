@@ -1,0 +1,41 @@
+{
+  "page": {
+    "modelRouting": "Model: routed automatically by cost/quality"
+  },
+  "history": {
+    "newConversation": "New conversation",
+    "searchPlaceholder": "Search conversations",
+    "noResults": "No conversations match your search.",
+    "emptyPreview": "No messages yet",
+    "collapse": "Collapse conversation history",
+    "expand": "Expand conversation history",
+    "groups": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "previous7Days": "Previous 7 days",
+      "older": "Older"
+    }
+  },
+  "thread": {
+    "agentName": "{{project}} Brain",
+    "you": "You",
+    "selectConversation": "Select a conversation from the left, or start a new one.",
+    "suggestionsTitle": "Try asking",
+    "composerPlaceholder": "Ask about risks, contracts, financials…",
+    "send": "Send"
+  },
+  "sources": {
+    "title": "Sources",
+    "hint": "Sources cited by the agent so far in this conversation.",
+    "empty": "No sources cited yet — ask a question to see them here.",
+    "count": "{{count}} source",
+    "count_other": "{{count}} sources",
+    "openInDocuments": "Open in Documents",
+    "collapse": "Collapse sources",
+    "expand": "Expand sources"
+  },
+  "citation": {
+    "trigger": "Source {{index}}: {{document}}",
+    "viewInDocuments": "View in Documents"
+  }
+}

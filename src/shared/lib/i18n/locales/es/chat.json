@@ -1,0 +1,41 @@
+{
+  "page": {
+    "modelRouting": "Modelo: enrutado automáticamente por coste/calidad"
+  },
+  "history": {
+    "newConversation": "Nueva conversación",
+    "searchPlaceholder": "Buscar conversaciones",
+    "noResults": "Ninguna conversación coincide con tu búsqueda.",
+    "emptyPreview": "Sin mensajes todavía",
+    "collapse": "Colapsar historial de conversaciones",
+    "expand": "Expandir historial de conversaciones",
+    "groups": {
+      "today": "Hoy",
+      "yesterday": "Ayer",
+      "previous7Days": "Últimos 7 días",
+      "older": "Anteriores"
+    }
+  },
+  "thread": {
+    "agentName": "{{project}} Brain",
+    "you": "Tú",
+    "selectConversation": "Selecciona una conversación de la izquierda, o inicia una nueva.",
+    "suggestionsTitle": "Prueba a preguntar",
+    "composerPlaceholder": "Pregunta sobre riesgos, contratos, finanzas…",
+    "send": "Enviar"
+  },
+  "sources": {
+    "title": "Fuentes",
+    "hint": "Fuentes citadas por el agente en esta conversación.",
+    "empty": "Todavía no se ha citado ninguna fuente — haz una pregunta para verlas aquí.",
+    "count": "{{count}} fuente",
+    "count_other": "{{count}} fuentes",
+    "openInDocuments": "Abrir en Documentación",
+    "collapse": "Colapsar fuentes",
+    "expand": "Expandir fuentes"
+  },
+  "citation": {
+    "trigger": "Fuente {{index}}: {{document}}",
+    "viewInDocuments": "Ver en Documentación"
+  }
+}

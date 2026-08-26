@@ -1,0 +1,18 @@
+{
+  "label": "Application selector",
+  "greeting": "Welcome{{name}}",
+  "subtitle": "Choose the application you want to open.",
+  "apps": {
+    "ma": {
+      "name": "M&A Platform",
+      "description": "Query, review and track M&A operations with a source-grounded AI agent.",
+      "status": "Active",
+      "cta": "Open"
+    },
+    "next": {
+      "name": "Next Applications",
+      "description": "The same reusable core, applied to the next business case.",
+      "status": "Coming soon"
+    }
+  }
+}

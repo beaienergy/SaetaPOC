@@ -1,0 +1,17 @@
+.reports-screen__preview-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .reports-screen__preview-row {
+    grid-template-columns: 1fr;
+  }
+}
+.reports-screen__section-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}

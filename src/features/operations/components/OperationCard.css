@@ -1,0 +1,70 @@
+.op-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    box-shadow var(--dur-fast) ease,
+    transform var(--dur-fast) ease;
+}
+.op-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
+}
+
+.op-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.op-card__name {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.op-card__target {
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+  margin-top: 2px;
+}
+
+.op-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+.op-card__meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.op-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-5);
+}
+
+/* Pantalla completa: cabecera (`OperationsHeader`) + contenido con su propio
+   padding — antes esta pantalla no llevaba ningún margen de página. */
+.operations-page {
+  min-height: 100dvh;
+  background: var(--color-bg);
+}
+.operations-page__content {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-8) var(--space-9);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+@media (max-width: 640px) {
+  .operations-page__content {
+    padding: var(--space-5);
+  }
+}

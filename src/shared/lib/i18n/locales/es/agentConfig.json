@@ -1,0 +1,37 @@
+{
+  "trigger": "Configuración del agente",
+  "prompt": {
+    "title": "Prompt",
+    "hint": "Instrucciones que sigue el agente en esta pantalla. Editable por operación.",
+    "save": "Guardar prompt",
+    "saved": "Guardado",
+    "reset": "Restaurar por defecto"
+  },
+  "skills": {
+    "title": "Skills",
+    "hint": "Procedimientos de dominio sembrados de antemano (ej. \"cómo se construye una Key Issue List\") — no es la memoria a largo plazo del agente, que vive en Analítica IA.",
+    "empty": "Todavía no hay skills para esta operación.",
+    "add": "Añadir skill",
+    "titleLabel": "Título",
+    "descriptionLabel": "Descripción breve",
+    "procedureLabel": "Procedimiento",
+    "titlePlaceholder": "ej. Cómo detectar contradicciones de versión",
+    "descriptionPlaceholder": "Una línea que describa cuándo aplica",
+    "procedurePlaceholder": "Procedimiento paso a paso que debe seguir el agente",
+    "save": "Guardar skill",
+    "cancel": "Cancelar",
+    "edit": "Editar skill",
+    "delete": "Eliminar skill"
+  },
+  "readOnly": {
+    "title": "Gestionado por la plataforma",
+    "hint": "Modelo, tools y middleware se configuran a nivel de backend — no editables desde aquí.",
+    "model": "Modelo",
+    "tools": "Tools",
+    "middleware": "Middleware"
+  },
+  "adminOnly": {
+    "badge": "Solo admin",
+    "hint": "Cambia a Admin (header) para gestionar skills y prompts de esta operación."
+  }
+}

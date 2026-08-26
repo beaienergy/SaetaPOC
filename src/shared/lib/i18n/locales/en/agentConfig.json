@@ -1,0 +1,37 @@
+{
+  "trigger": "Agent settings",
+  "prompt": {
+    "title": "Prompt",
+    "hint": "Instructions the agent follows on this screen. Editable per operation.",
+    "save": "Save prompt",
+    "saved": "Saved",
+    "reset": "Restore default"
+  },
+  "skills": {
+    "title": "Skills",
+    "hint": "Domain procedures seeded ahead of time (e.g. \"how to build a Key Issue List\") — not the agent's long-term memory, which lives under AI Analytics.",
+    "empty": "No skills yet for this operation.",
+    "add": "Add skill",
+    "titleLabel": "Title",
+    "descriptionLabel": "Short description",
+    "procedureLabel": "Procedure",
+    "titlePlaceholder": "e.g. How to detect version contradictions",
+    "descriptionPlaceholder": "One line describing when this applies",
+    "procedurePlaceholder": "Step-by-step procedure the agent should follow",
+    "save": "Save skill",
+    "cancel": "Cancel",
+    "edit": "Edit skill",
+    "delete": "Delete skill"
+  },
+  "readOnly": {
+    "title": "Managed by the platform",
+    "hint": "Model, tools and middleware are configured at the backend level — not editable from here.",
+    "model": "Model",
+    "tools": "Tools",
+    "middleware": "Middleware"
+  },
+  "adminOnly": {
+    "badge": "Admin only",
+    "hint": "Switch to Admin (header) to manage skills and prompts for this operation."
+  }
+}

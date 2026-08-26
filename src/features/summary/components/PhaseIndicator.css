@@ -1,0 +1,49 @@
+.phase-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.phase-indicator__step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  padding: 4px var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+}
+
+.phase-indicator__step.is-done {
+  color: var(--color-text-soft);
+  border-color: var(--color-border-strong);
+}
+
+.phase-indicator__step.is-current {
+  color: var(--color-text-on-primary);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.phase-indicator__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  background: var(--color-success);
+  color: #fff;
+}
+
+.phase-indicator__step:not(.is-done) .phase-indicator__dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  opacity: 0.5;
+}

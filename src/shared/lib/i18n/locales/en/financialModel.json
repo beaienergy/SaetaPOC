@@ -1,0 +1,59 @@
+{
+  "title": "Financial model",
+  "subtitle": "Consistency audit of the financial model working copy — broken formulas, external links, hardcoded values and circularities.",
+  "banner": {
+    "title": "Working on a copy.",
+    "body": "The original financial model file is never modified — every check on this screen runs against an isolated working copy."
+  },
+  "files": {
+    "title": "Loaded financial models",
+    "subtitle": "Files ingested for this operation, with their version.",
+    "sheetCount": "{{count}} sheet",
+    "sheetCount_other": "{{count}} sheets",
+    "updated": "Updated",
+    "empty": "No financial model files loaded for this operation yet."
+  },
+  "audit": {
+    "title": "Consistency audit",
+    "subtitle": "Flags broken formulas, external links, hardcoded values and circularities — the agent never edits the model, only reports findings.",
+    "run": "Run audit",
+    "rerun": "Re-run audit",
+    "running": "Auditing the working copy…",
+    "lastRun": "Last run",
+    "notRunMessage": "This model has not been audited yet.",
+    "notRunHint": "Run the audit to check for broken formulas, external links, hardcoded values and circularities across every tab.",
+    "summary": "{{count}} finding",
+    "summary_other": "{{count}} findings",
+    "recommendation": "Suggested fix",
+    "columns": {
+      "severity": "Severity",
+      "location": "Location",
+      "type": "Type",
+      "finding": "Finding"
+    },
+    "severity": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "type": {
+      "broken_formula": "Broken formula",
+      "external_link": "External link",
+      "hardcoded_value": "Hardcoded value",
+      "circularity": "Circularity",
+      "cross_tab_inconsistency": "Cross-tab inconsistency"
+    }
+  },
+  "sensitivities": {
+    "title": "Sensitivities",
+    "subtitle": "Key assumptions and results by scenario.",
+    "assumptions": "Assumptions",
+    "results": "Results",
+    "scenario": {
+      "downside": "Downside",
+      "base": "Base case",
+      "upside": "Upside"
+    }
+  }
+}
