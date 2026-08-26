@@ -148,14 +148,14 @@
    para que gane el pulso visual al resto. */
 .login-page__card {
   width: 100%;
-  max-width: 620px;
+  max-width: 440px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow:
     var(--shadow-lg),
     0 0 90px color-mix(in srgb, var(--color-brand-glow-1) 38%, transparent);
-  padding: var(--space-10) 64px;
+  padding: var(--space-8) var(--space-7);
   text-align: left;
   animation: fadeInUp var(--dur-normal) ease;
 }

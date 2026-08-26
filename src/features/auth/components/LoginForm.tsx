@@ -77,8 +77,6 @@ export function LoginForm({ onSuccess }: { onSuccess: () => void }) {
       <Button type="submit" variant="primary" fullWidth loading={submitting} icon={<LogIn size={18} />}>
         {submitting ? t('submitting') : t('submit')}
       </Button>
-
-      <p className="login-form__hint">{t('demoHint')}</p>
     </form>
   )
 }
